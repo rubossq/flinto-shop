@@ -1,4 +1,4 @@
-# Playweb
+# Flintoshop
 
 eCommerce store for wide directions.
 
