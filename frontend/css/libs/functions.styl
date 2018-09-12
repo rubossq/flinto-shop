@@ -1,0 +1,15 @@
+@import "variables"
+
+spaces(property, styles...)
+  for $i in $spaces
+    {'.'+property+'-' + $i}
+      for $s in styles
+        {$s}: (2 + $spacer * $i)
+
+
+
+sizes(property, styles...)
+  for $i, index in $sizer
+    {'.'+property+'-' + (1 + index)}
+      for $s in styles
+        {$s}: unit($i, '%')

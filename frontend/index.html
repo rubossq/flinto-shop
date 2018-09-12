@@ -4,12 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Shop</title>
-    <link rel="stylesheet" href="css/bundle.css">
+    <!--<link rel="stylesheet" href="css/bundle.css">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://unpkg.com/ionicons@4.4.2/dist/ionicons.js"></script>
 </head>
 <body>
 
-hello how are you
+<header>
+    <nav class="px-5 navbar navbar-expand-md mx-auto">
+        <a class="navbar-brand logo" href="#">
+            Flinto
+        </a>
+
+        <div class="ml-auto pt-2 order-1 order-md-2 ">
+            <a href="javascript:void(0)">
+                <ion-icon class="icon px-2" name="search"></ion-icon>
+            </a>
+            <a href="javascript:void(0)" class="d-inline-block px-2 text-center position-relative mr-2">
+                <ion-icon class="icon" name="cart"></ion-icon>
+                <div class="cart-count position-absolute rounded-circle text-center align-top">
+                    <div class="cart-count-text">2</div>
+                </div>
+            </a>
+            <button class="d-md-none icon-btn px-2" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <ion-icon class="align-top mt-1" name="menu"></ion-icon>
+            </button>
+        </div>
+
+        <div class="order-2 order-md-1 collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav d-flex justify-content-between mx-auto">
+                <a class="nav-item nav-link" href="#">Demos</a>
+                <a class="nav-item nav-link not-active" href="#">Shop</a>
+                <a class="nav-item nav-link not-active" href="#">Collections</a>
+                <a class="nav-item nav-link not-active" href="#">Journal</a>
+                <a class="nav-item nav-link not-active" href="#">Elements</a>
+                <a class="nav-item nav-link not-active" href="#">Pages</a>
+            </div>
+        </div>
+    </nav>
+    <div class="mt-10 text-center pb-10">
+        <h1 class="mb-3">Arrivals</h1>
+        <div>
+            <a href="#">Woman Collection</a>
+            <ion-icon class="icon align-bottom px-3" name="hourglass"></ion-icon>
+            <a href="#">&nbsp; Man Collection &nbsp;</a>
+        </div>
+    </div>
+</header>
 
 </body>
-    <script src="js/all.js"></script>
+    <!--<script src="js/all.js"></script>-->
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </html>

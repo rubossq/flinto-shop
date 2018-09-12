@@ -24,31 +24,32 @@ gulp.task('prepare:scripts', function () {
         'frontend/js/bootstrap.min.js', 'frontend/js/**/*.js'])
         .pipe(cached('scripts'))
         .pipe(gulpIf(isDev, sourcemaps.init()))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(remember('scripts'))
-        .pipe(concat('all.js'))
+        //.pipe(concat('all.js'))
         .pipe(gulpIf(isDev, sourcemaps.write()))
         .pipe(gulp.dest('public/js'));
 });
 
 gulp.task('prepare:styles', function () {
-    return gulp.src(['frontend/css/**/*.*', '!frontend/css/stylus/libs/*.styl'])
+    return gulp.src(['frontend/css/**/*.*', '!frontend/css/libs/*.styl'])
         .pipe(cached('styles'))
         .pipe(gulpIf(function (file) {
             return file.extname === '.styl';
         }, stylus()))
         .pipe(gulpIf(isDev, sourcemaps.init()))
         .pipe(autoprefixer())
-        .pipe(cssnano())
+        //.pipe(cssnano())
         .pipe(remember('styles'))
-        .pipe(concat('bundle.css'))
+        //.pipe(concat('bundle.css'))
         .pipe(gulpIf(isDev, sourcemaps.write()))
         .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('prepare:assets', function () {
     return gulp.src(['frontend/**/*.*', '!frontend/css/**/*.*',
-        '!frontend/js/**/*.js'], {since: gulp.lastRun('prepare:assets')})
+        '!frontend/js/**/*.js'])
+        .pipe(debug('assets'))
         .pipe(newer('public'))
         .pipe(gulp.dest('public'));
 });
@@ -68,7 +69,7 @@ gulp.task('watch', function () {
             remember.forget('scripts', path.resolve(filepath));
             delete cached.caches.scripts[path.resolve(filepath)];
         });
-    gulp.watch(['frontend/css/**/*.*', '!frontend/css/stylus/libs/*.styl'],
+    gulp.watch(['frontend/css/**/*.*'],
         gulp.series('prepare:styles')).on('unlink', function (filepath) {
         remember.forget('styles', path.resolve(filepath));
         delete cached.caches.scripts[path.resolve(filepath)];
@@ -79,7 +80,8 @@ gulp.task('watch', function () {
 
 gulp.task('serve', function () {
     browserSync.init({
-        server: "public"
+        server: "public",
+        notify: false
     });
 
     browserSync.watch('public/**/*.*').on('change', browserSync.reload);

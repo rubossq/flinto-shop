@@ -1,0 +1,3 @@
+Poppins Medium
+Poppins Regular
+Poppins SemiBold
