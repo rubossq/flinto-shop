@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Shop</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+    <!--<link rel="stylesheet" href="css/bundle.css">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://unpkg.com/ionicons@4.4.2/dist/ionicons.js"></script>
+</head>
+<body>
+<div class="yellow-bg custom-alert alert-dismissible fade show alert p-0 m-0">
+    <div class="container mx-auto no-gutters active px-3 py-3 d-flex justify-content-between align-items-center">
+        <div>
+            <span class="f-medium big-text">SALE</span>
+        </div>
+        <div class="d-none d-md-inline-block">
+            <span class="d-none d-md-inline-block">New markdowns up to 40% for clothes, shoes, bags &nbsp;</span>
+            <div class="d-inline-block">
+                <a class="f-semibold underline" href="#">For Men</a>
+                <ion-icon class="" name="hourglass">&nbsp;</ion-icon>
+                <a class="f-semibold underline" href="#">For Women</a>
+            </div>
+        </div>
+
+
+        <div class="d-inline-block big-text not-active ml-2 pt-1">
+            <a href="javascript:void(0)" data-dismiss="alert" aria-label="Close">
+                <ion-icon name="close"></ion-icon>
+            </a>
+        </div>
+
+    </div>
+</div>
+<header class="image-bg">
+    <nav class="container no-gutters px-3 navbar navbar-expand-md mx-auto f-medium">
+        <a class="navbar-brand logo" href="#">
+            Flinto
+        </a>
+
+        <div class="ml-auto pt-2 order-1 order-md-2 ">
+            <a href="javascript:void(0)">
+                <ion-icon class="icon px-2" name="search"></ion-icon>
+            </a>
+            <a href="javascript:void(0)" class="d-inline-block px-2 text-center position-relative mr-2">
+                <ion-icon class="icon" name="cart"></ion-icon>
+                <div class="cart-count position-absolute rounded-circle text-center align-top">
+                    <div class="cart-count-text">2</div>
+                </div>
+            </a>
+            <button class="d-md-none icon-btn px-2" type="button" data-toggle="collapse" data-target="##nav"
+                    aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                <ion-icon class="align-top mt-1" name="menu"></ion-icon>
+            </button>
+        </div>
+
+        <div class="order-2 order-md-1 collapse navbar-collapse" id="nav">
+            <div class="navbar-nav d-flex justify-content-between mx-auto not-active">
+                <a class="nav-item nav-link active" href="#">Demos</a>
+                <a class="nav-item nav-link" href="#">Shop</a>
+                <a class="nav-item nav-link" href="#">Collections</a>
+                <a class="nav-item nav-link" href="#">Elements</a>
+                <a class="nav-item nav-link" href="#">Pages</a>
+            </div>
+        </div>
+    </nav>
+    <div class="mt-5 text-center pb-10 f-medium">
+        <span class="mb-3 header-2-text f-light">Filters</span>
+        <div class="not-active">
+            <a href="#">Shop</a>
+            <span> &nbsp; > &nbsp; </span>
+            <a class="active" href="#">Filters</a>
+        </div>
+    </div>
+</header>
+<main class="mt-4 mx-auto">
+    <div class="container no-gutters f-medium not-active mx-auto text-center px-3">
+        <div class="row no-gutters">
+            <aside class="d-none d-lg-block col-4 text-left pl-5">
+                <div class="filter-category">
+                    <span class="big-text active">Sort by</span>
+                </div>
+                <div class="filter-params">
+                    <a href="#">Default</a>
+                    <a class="active" href="#">Popularity</a>
+                    <a href="#">Newest</a>
+                    <a href="#">Price: low to hight</a>
+                    <a href="#">Price: hight to low</a>
+                </div>
+                <div class="filter-category">
+                    <span class="big-text active">Price</span>
+                </div>
+                <div class="mt-3 filter-params">
+                    <a href="#">$0.00 - $50.00</a>
+                    <a class="active" href="#">$0.00 - $50.00</a>
+                    <a href="#">$0.00 - $50.00</a>
+                    <a href="#">$0.00 - $50.00</a>
+                    <a href="#">$350.00+</a>
+                </div>
+            </aside>
+            <aside class="d-block d-lg-none col-12 text-left mb-3">
+                <form action="" method="post" class="form-inline">
+                    <div class="form-group mr-3">
+                        <label for="sortby">
+                            <span class="active">Sort by &nbsp;</span>
+                        </label>
+                        <select id="sortby" class="form-control-sm">
+                            <option>
+                                Default
+                            </option>
+                            <option>
+                                Popularity
+                            </option>
+                            <option>
+                                Newest
+                            </option>
+                            <option>
+                                Price: low to hight
+                            </option>
+                            <option>
+                                Price: hight to low
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">
+                            <span class="active">Price &nbsp;</span>
+                        </label>
+                        <select id="price" class="form-control-sm">
+                            <option>
+                                $0.00 - $50.00
+                            </option>
+                            <option>
+                                $0.00 - $50.00
+                            </option>
+                            <option>
+                                $0.00 - $50.00
+                            </option>
+                            <option>
+                                $0.00 - $50.00
+                            </option>
+                            <option>
+                                $350.00+
+                            </option>
+                        </select>
+                    </div>
+                </form>
+            </aside>
+            <div class="col-lg-8 col-12">
+                <div class="mt-1 text-left">
+                    <span>We found <span class="f-semibold active">17</span> products available for you</span>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6 mb-5">
+                        <div class="image-bg square-bg"></div>
+                        <div class="text-center mt-2">
+                            <span class="f-medium active">Barton Sunglasses</span>
+                            <br>
+                            <span>194.00 USD</span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-5">
+                        <div class="image-bg square-bg"></div>
+                        <div class="text-center mt-2">
+                            <span class="f-medium active">Barton Sunglasses</span>
+                            <br>
+                            <span>194.00 USD</span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-5">
+                        <div class="image-bg square-bg"></div>
+                        <div class="text-center mt-2">
+                            <span class="f-medium active">Barton Sunglasses</span>
+                            <br>
+                            <span>194.00 USD</span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-5">
+                        <div class="image-bg square-bg"></div>
+                        <div class="text-center mt-2">
+                            <span class="f-medium active">Barton Sunglasses</span>
+                            <br>
+                            <span>194.00 USD</span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-5">
+                        <div class="image-bg square-bg position-relative">
+                            <div class="percent-sale position-absolute">
+                                -35%
+                            </div>
+                        </div>
+                        <div class="text-center mt-2">
+                            <span class="f-medium active">Barton Sunglasses</span>
+                            <br>
+                            <span>194.00 USD</span>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-5">
+                        <div class="image-bg square-bg"></div>
+                        <div class="text-center mt-2">
+                            <span class="f-medium active">Barton Sunglasses</span>
+                            <br>
+                            <span>194.00 USD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-12">
+                <hr>
+                <nav aria-label="Page navigation example ">
+                    <ul class="pagination justify-content-center active">
+                        <li class="page-item mr-auto">
+                            <a class="page-link" href="#" tabindex="-1">< Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link active-pagination" href="#"> 1 </a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item ml-auto">
+                            <a class="page-link" href="#">Next ></a>
+                        </li>
+                    </ul>
+                </nav>
+                <hr>
+            </div>
+
+        </div>
+        <div class="row no-gutters mt-5">
+            <div class="col-md-6 col-lg-3 col-12 px-3 text-left mb-5">
+                <div class="active f-semibold ">
+                    <span>On Sale Products</span>
+                </div>
+                <hr>
+                <div class="row no-gutters">
+                    <div class="col-4">
+                        <div class="image-bg square-bg">
+
+                        </div>
+                    </div>
+                    <div class="col-8 pl-2">
+                        <div>
+                            <span class="active">Bog in Black Leather</span>
+                        </div>
+                        <div class="yellow big-text stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                        </div>
+                        <div>
+                            <span>$349.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 col-12 px-3 text-left mb-5">
+                <div class="active f-semibold ">
+                    <span>On Sale Products</span>
+                </div>
+                <hr>
+                <div class="row no-gutters">
+                    <div class="col-4">
+                        <div class="image-bg square-bg">
+
+                        </div>
+                    </div>
+                    <div class="col-8 pl-2">
+                        <div>
+                            <span class="active">Bog in Black Leather</span>
+                        </div>
+                        <div class="yellow big-text stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                        </div>
+                        <div>
+                            <span>$349.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 col-12 px-3 text-left mb-5">
+                <div class="active f-semibold ">
+                    <span>On Sale Products</span>
+                </div>
+                <hr>
+                <div class="row no-gutters">
+                    <div class="col-4">
+                        <div class="image-bg square-bg">
+
+                        </div>
+                    </div>
+                    <div class="col-8 pl-2">
+                        <div>
+                            <span class="active">Bog in Black Leather</span>
+                        </div>
+                        <div class="yellow big-text stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                        </div>
+                        <div>
+                            <span>$349.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 col-12 px-3 text-left mb-5">
+                <div class="active f-semibold ">
+                    <span>On Sale Products</span>
+                </div>
+                <hr>
+                <div class="row no-gutters">
+                    <div class="col-4">
+                        <div class="image-bg square-bg">
+
+                        </div>
+                    </div>
+                    <div class="col-8 pl-2">
+                        <div>
+                            <span class="active">Bog in Black Leather</span>
+                        </div>
+                        <div class="yellow big-text stars">
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star"></ion-icon>
+                            <ion-icon name="star-half"></ion-icon>
+                            <ion-icon name="star-outline"></ion-icon>
+                        </div>
+                        <div>
+                            <span>$349.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="image-bg pt-5 pb-4 mt-3">
+        <div class="container no-gutters mx-auto text-center">
+            <div>
+                <span class="sub-header-text">
+                    Get Discount 30% Off
+                </span>
+                <br>
+                <span>
+                    Subscribe for our newsletters and get 30% discount!
+                </span>
+            </div>
+            <div class="mt-4 row">
+                <div class="col-12 col-md-10 col-lg-8 mx-auto">
+                    <form action="" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-12 col-md-8">
+                                <input type="email" class="rounded-0 form-control" id="email" placeholder="Enter your email address">
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <button type="submit" class="rounded-0 btn bg-red text-white w-100">Subscribe</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="container no-gutters not-active px-3 py-3 big-text mx-auto">
+        <div class="row no-gutters d-flex justify-content-between align-items-center">
+            <div>
+                <a class="logo active f-semibold" href="#">
+                    Flinto
+                </a>
+            </div>
+            <div >
+                <span >Flinto 2017. All rights reserved</span>
+            </div>
+            <div class="mt-2">
+                <a class="mr-1" href="#">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+                <a class="mr-1" href="#">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+                <a class="mr-1" href="#">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="#">
+                    <ion-icon name="logo-pinterest"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<!--<script src="js/all.js"></script>-->
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+    $('#slider').carousel({
+        interval: 5000
+    });
+
+    $('#slider').on('slide.bs.carousel', function (event) {
+        setActive(event.to);
+    });
+
+    function slideTo(slide) {
+        $('#slider').carousel(slide);
+        setActive(slide);
+    }
+
+    function setActive(slide) {
+        $('.slider-nav-item').each(function () {
+            $(this).removeClass('active');
+        });
+
+        $('.slider-nav-item').eq(slide).addClass('active');
+    }
+
+</script>
+</html>

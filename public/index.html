@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Shop</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
     <!--<link rel="stylesheet" href="css/bundle.css">-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -11,14 +12,65 @@
 </head>
 <body>
 
-<header>
-    <nav class="px-5 navbar navbar-expand-md mx-auto">
+<!-- Search Modal Start -->
+<div class="modal" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+    <div class="image-bg h-100 position-relative">
+        <div class="container no-gutters mx-auto px-3 pt-3">
+            <div class="row no-gutters text-center">
+                <div class="col-12">
+                    <div class="sub-header-text f-medium"><span class="f-regular">Flinto</span> Search</div>
+                </div>
+            </div>
+            <div class="row no-gutters text-center bg-white mt-4">
+                <div class="col-12 border-bottom">
+                    <form action="" method="post">
+                        <div class="form-row mx-0">
+                            <input class="col-11 form-control rounded-0 border-0" type="text" name="search"
+                                   id="search" placeholder="Enter your item" required>
+                            <button class="text-center col-1 very-big-text btn btn-light border-0 rounded-0"
+                                    type="submit">
+                                <ion-icon class="align-middle" name="search"></ion-icon>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-12 border-bottom">
+                    <div class="row no-gutters p-3 d-flex align-items-center">
+                        <div class="col-2 col-lg-1">
+                            <div class="image-bg square-bg">
+
+                            </div>
+                        </div>
+                        <div class="col-9 text-left f-medium pl-2 big-text"> Bagpack with buckles</div>
+                    </div>
+                </div>
+                <div class="col-12 border-bottom">
+                    <div class="row no-gutters p-3 d-flex align-items-center">
+                        <div class="col-2 col-lg-1">
+                            <div class="image-bg square-bg">
+
+                            </div>
+                        </div>
+                        <div class="col-9 text-left f-medium pl-2 big-text"> Bagpack with buckles</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="close-modal-btn text-uppercase text-center underline position-absolute mx-auto f-medium big-text pointer"
+             data-dismiss="modal" aria-label="Close"> close
+        </div>
+    </div>
+</div>
+<!-- Search Modal End -->
+
+<header class="image-bg">
+    <nav class="container no-gutters px-3 navbar navbar-expand-md mx-auto f-medium">
         <a class="navbar-brand logo" href="#">
             Flinto
         </a>
 
         <div class="ml-auto pt-2 order-1 order-md-2 ">
-            <a href="javascript:void(0)">
+            <a href="javascript:void(0)" data-toggle="modal" data-target="#searchModal">
                 <ion-icon class="icon px-2" name="search"></ion-icon>
             </a>
             <a href="javascript:void(0)" class="d-inline-block px-2 text-center position-relative mr-2">
@@ -27,35 +79,296 @@
                     <div class="cart-count-text">2</div>
                 </div>
             </a>
-            <button class="d-md-none icon-btn px-2" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="d-md-none icon-btn px-2" type="button" data-toggle="collapse" data-target="#nav"
+                    aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
                 <ion-icon class="align-top mt-1" name="menu"></ion-icon>
             </button>
         </div>
 
-        <div class="order-2 order-md-1 collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav d-flex justify-content-between mx-auto">
-                <a class="nav-item nav-link" href="#">Demos</a>
-                <a class="nav-item nav-link not-active" href="#">Shop</a>
-                <a class="nav-item nav-link not-active" href="#">Collections</a>
-                <a class="nav-item nav-link not-active" href="#">Journal</a>
-                <a class="nav-item nav-link not-active" href="#">Elements</a>
-                <a class="nav-item nav-link not-active" href="#">Pages</a>
+        <div class="order-2 order-md-1 collapse navbar-collapse" id="nav">
+            <div class="navbar-nav d-flex justify-content-between mx-auto not-active">
+                <a class="nav-item nav-link active" href="#">Collections</a>
+                <a class="nav-item nav-link" href="#">Sales</a>
+                <a class="nav-item nav-link" href="#">Trends</a>
+                <a class="nav-item nav-link" href="#">Terms</a>
+                <a class="nav-item nav-link" href="#">Policy</a>
+                <a class="nav-item nav-link" href="#">Refunds</a>
             </div>
         </div>
     </nav>
-    <div class="mt-10 text-center pb-10">
-        <h1 class="mb-3">Arrivals</h1>
-        <div>
-            <a href="#">Woman Collection</a>
-            <ion-icon class="icon align-bottom px-3" name="hourglass"></ion-icon>
-            <a href="#">&nbsp; Man Collection &nbsp;</a>
+    <div class="mt-10 text-center pb-10 f-medium">
+        <span class="mb-3 header-text f-light">New Arrivals</span>
+        <div class="row no-gutters d-flex justify-content-center">
+            <div class="col-12 col-md-5 text-md-right text-center">
+                <a class="underline" href="#">Woman Collection</a>
+            </div>
+            <div class="col-12 col-md-1">
+                <ion-icon class="icon align-bottom px-3" name="hourglass"></ion-icon>
+            </div>
+            <div class="col-12 col-md-5 text-md-left text-center">
+                <a class="underline" href="#">&nbsp; Man Collection &nbsp;</a>
+            </div>
+
         </div>
     </div>
 </header>
+<main class="mt-4 mx-auto">
+    <div class="container no-gutters mx-auto">
+        <div class="row">
+            <div class="col-12 col-md-4 px-0">
+                <div class="block-l-t image-bg position-relative border-hover">
+                    <div class="text-right position-absolute text-l-t very-big-text">
+                        <span class="emerald">for</span>
+                        <br>
+                        <span class="f-medium">Women</span>
+                    </div>
+                </div>
+                <div class="block-l-b image-bg position-relative border-hover mt-3">
+                    <div class="position-absolute text-l-b sub-header-text mx-auto text-center">
+                        <span class="emerald">Trending items</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 px-0">
+                <div class="block-m-t image-bg border border-dark position-relative border-hover">
+                    <div class="position-absolute text-m-t header-2-text mx-auto text-center">
+                        <span class="emerald">Best Deals</span>
+                    </div>
+                </div>
 
+                <div class="block-m-b image-bg position-relative border-hover mt-3">
+                    <div class="position-absolute add2cart text-center">
+                        <a class="bg-white p-3 f-semibold big-text" href="javascript:void(0)">
+                            <span>Accessoires</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 px-0">
+                <div class="block-r-t image-bg border-hover position-relative">
+                    <div class="text-left position-absolute text-r-t very-big-text">
+                        <span class="emerald">for</span>
+                        <br>
+                        <span class="f-medium">Men</span>
+                    </div>
+                </div>
+                <div class="block-r-b image-bg position-relative border-hover mt-3">
+                    <div class="position-absolute add2cart text-center">
+                        <a class="bg-white p-3 f-semibold big-text" href="javascript:void(0)">
+                            <span>Shoes</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container no-gutters mx-auto mt-6">
+        <div class="text-center">
+             <span class="f-medium sub-header-text">
+                Featured Products
+            </span>
+        </div>
+        <div>
+            <nav class="text-center mt-4 not-active">
+                <a class="mx-2 big-text f-medium active slider-nav-item" onclick="slideTo(0)" href="javascript:void(0)">
+                    Best Sellers
+                </a>
+                <a class="mx-2 big-text f-medium slider-nav-item" onclick="slideTo(1)" href="javascript:void(0)">
+                    New Items
+                </a>
+                <a class="mx-2 big-text f-medium slider-nav-item" onclick="slideTo(2)" href="javascript:void(0)">
+                    Sales Items
+                </a>
+            </nav>
+        </div>
+        <div class="mt-4">
+            <div id="slider" class="carousel slide" data-ride="carousel">
+                <div class="carousel-indicators slider-indicators">
+                    <a class="active rounded-circle mx-1" href="javascript:void(0)" data-target="#slider"
+                       data-slide-to="0"></a>
+                    <a class="rounded-circle mx-1" href="javascript:void(0)" data-target="#slider"
+                       data-slide-to="1"></a>
+                    <a class="rounded-circle mx-1" href="javascript:void(0)" data-target="#slider"
+                       data-slide-to="2"></a>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container no-gutters">
+                            <div class="row">
+                                <div class="col-12 col-md-6 col-lg-3 px-2 mb-3">
+                                    <div class="image-bg square-bg position-relative">
+                                        <div class="sale position-absolute">
+                                            sale
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="big-text">Barton Sunglasses</span>
+                                        <br>
+                                        <span class="not-active">194.00 USD</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3 px-2 mb-3">
+                                    <div class="image-bg square-bg position-relative">
+
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="big-text">Barton Sunglasses</span>
+                                        <br>
+                                        <span class="not-active">194.00 USD</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3 px-2 mb-3">
+                                    <div class="image-bg square-bg position-relative">
+                                        <div class="hot position-absolute">
+                                            hot
+                                        </div>
+                                        <div class="position-absolute add2cart text-center">
+                                            <a class="bg-white p-3" href="javascript:void(0)">
+                                                <span>ADD TO CART &nbsp; | &nbsp; <ion-icon class="align-top big-text"
+                                                                                            name="heart-empty"></ion-icon></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="big-text">Barton Sunglasses</span>
+                                        <br>
+                                        <span class="not-active">194.00 USD</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3 px-2 mb-3">
+                                    <div class="image-bg square-bg position-relative">
+
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="big-text">Barton Sunglasses</span>
+                                        <br>
+                                        <span class="not-active">194.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto mt-8">
+        <div class="row d-flex justify-content-between">
+            <div class="col-12 col-md-4 col-lg-3 px-2 text-center border-right mb-5">
+                <div>
+                    <img class="img-advantage" src="images/truck.png"/>
+                </div>
+                <div class="mt-3">
+                    <span class="big-text f-medium not-active">Free shipping</span>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 px-2 text-center mb-5">
+                <div>
+                    <img class="img-advantage" src="images/support.png"/>
+                </div>
+                <div class="mt-3">
+                    <span class="big-text f-medium not-active">Support Customers</span>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 px-2 text-center border-left mb-5">
+                <div>
+                    <img class="img-advantage" src="images/shield.png"/>
+                </div>
+                <div class="mt-3">
+                    <span class="big-text f-medium not-active">Secure Payments</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="image-bg pt-5 pb-4 mt-3">
+        <div class="container no-gutters mx-auto text-center">
+            <div>
+                <span class="sub-header-text">
+                    Get Discount 30% Off
+                </span>
+                <br>
+                <span>
+                    Subscribe for our newsletters and get 30% discount!
+                </span>
+            </div>
+            <div class="mt-4 row">
+                <div class="col-12 col-md-10 col-lg-8 mx-auto">
+                    <form action="" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-12 col-md-8">
+                                <input type="email" class="rounded-0 form-control" id="email"
+                                       placeholder="Enter your email address">
+                            </div>
+                            <div class="col-5 col-12 col-md-4">
+                                <button type="submit" class="rounded-0 btn bg-red text-white w-100">Subscribe</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+<footer>
+    <div class="container no-gutters not-active px-3 py-3 big-text mx-auto">
+        <div class="row no-gutters d-flex justify-content-between align-items-center">
+            <div>
+                <a class="logo active f-semibold" href="#">
+                    Flinto
+                </a>
+            </div>
+            <div class="d-flex flex-column">
+                <span>Flinto 2018. All rights reserved. <a class="blue underline" href="#">About.</a> <a
+                        class="blue underline" href="#">Contacts.</a></span>
+            </div>
+            <div class="mt-2">
+                <a class="mr-1" href="#">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+                <a class="mr-1" href="#">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+                <a class="mr-1" href="#">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="#">
+                    <ion-icon name="logo-pinterest"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
-    <!--<script src="js/all.js"></script>-->
+<!--<script src="js/all.js"></script>-->
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+    $('#slider').carousel({
+        interval: 5000
+    });
+
+    $('#slider').on('slide.bs.carousel', function (event) {
+        setActive(event.to);
+    });
+
+    function slideTo(slide) {
+        $('#slider').carousel(slide);
+        setActive(slide);
+    }
+
+    function setActive(slide) {
+        $('.slider-nav-item').each(function () {
+            $(this).removeClass('active');
+        });
+
+        $('.slider-nav-item').eq(slide).addClass('active');
+    }
+
+
+</script>
 </html>

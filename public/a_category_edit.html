@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://unpkg.com/ionicons@4.4.2/dist/ionicons.js"></script>
+</head>
+<body class="h-100">
+
+<main class="container-fluid no-gutters p-0 h-100">
+    <div class="row no-gutters h-100">
+        <aside class="col-4 h-100">
+            <header class="container-fluid no-gutters p-0">
+                <div class="row no-gutters">
+                    <div class="bg-black col-12 py-4 px-3 text-center">
+                        <span class="f-medium big-text text-white">Admin panel</span>
+                    </div>
+                </div>
+            </header>
+            <nav class="nav-panel pt-3 bg-dark w-100 h-100">
+                <a href="#" class="bg-blue ">
+                    <div>
+                        <ion-icon class="align-middle big-text" name="home"></ion-icon>
+                        <span class="align-middle">Dashboard</span>
+                    </div>
+                </a>
+                <div>
+                    <a href="#" data-toggle="collapse" data-target="#categories-nav-block" aria-expanded="false"
+                       aria-controls="categories-nav-block">
+                        <div>
+                            <ion-icon class="align-middle big-text" name="list"></ion-icon>
+                            <span class="align-middle">Categories</span>
+                        </div>
+                        <div class="big-text align-middle arrow">
+                            <ion-icon name="arrow-dropright"></ion-icon>
+                        </div>
+                    </a>
+                    <div id="categories-nav-block" class="collapse">
+                        <div class="pl-4">
+                            <a href="#" class="">
+                                <div>
+                                    <ion-icon class="align-middle big-text" name="paper"></ion-icon>
+                                    <span class="align-middle">Categories list</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="pl-4">
+                            <a href="#" class="">
+                                <div>
+                                    <ion-icon class="align-middle big-text" name="add-circle-outline"></ion-icon>
+                                    <span class="align-middle">Add Category</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="#" data-toggle="collapse" data-target="#items-nav-block" aria-expanded="false"
+                       aria-controls="items-nav-block">
+                        <div>
+                            <ion-icon class="align-middle big-text" name="list-box"></ion-icon>
+                            <span class="align-middle">Items</span>
+                        </div>
+                        <div class="big-text align-middle arrow">
+                            <ion-icon name="arrow-dropright"></ion-icon>
+                        </div>
+                    </a>
+                    <div id="items-nav-block" class="collapse">
+                        <div class="pl-4">
+                            <a href="#" class="">
+                                <div>
+                                    <ion-icon class="align-middle big-text" name="paper"></ion-icon>
+                                    <span class="align-middle">Items list</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="pl-4">
+                            <a href="#" class="">
+                                <div>
+                                    <ion-icon class="align-middle big-text" name="add-circle-outline"></ion-icon>
+                                    <span class="align-middle">Add Item</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+        <div class="col-8">
+            <div class="row no-gutters">
+                <header class="container-fluid no-gutters p-0 bg-blue">
+                    <div class="row no-gutters">
+                        <div class="col-12 py-4 px-3 text-center text-white clearfix">
+                            <div class="d-inline-block big-text">
+                                Update Category
+                            </div>
+                            <div class="float-right d-inline-block ">
+                                <ion-icon class="big-text align-middle" name="person"></ion-icon>
+                                <span class="f-medium align-middle small-text ">Admin</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </header>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-12 p-4">
+                    <div class="row no-gutters d-flex justify-content-between">
+                        <div class="col-4 text-white pr-3">
+                            <div class="px-3 py-2 bg-red ">
+                                <div><span class="text-uppercase">Categories</span></div>
+                                <div class="small-text"><span class="big-text f-medium text-uppercase">112</span> total</div>
+                            </div>
+                        </div>
+                        <div class="col-4 text-white">
+                            <div class="px-3 py-2 bg-blue ">
+                                <div><span class="text-uppercase">Items</span></div>
+                                <div class="small-text"><span class="big-text f-medium text-uppercase">1112</span> total</div>
+                            </div>
+                        </div>
+                        <div class="col-4 pl-3 text-white">
+                            <div class="px-3 py-2 bg-green">
+                                <div><span class="text-uppercase">Orders</span></div>
+                                <div class="small-text"><span class="big-text f-medium text-uppercase">2112</span> total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
+</body>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+
+    function subscribeArrow(selector){
+        $(selector).on('hide.bs.collapse', function () {
+            $(selector).parent().find('.arrow').first()
+                .html('<ion-icon name="arrow-dropright"></ion-icon>');
+        });
+        $(selector).on('show.bs.collapse', function () {
+            $(selector).parent().find('.arrow').first()
+                .html('<ion-icon name="arrow-dropdown"></ion-icon>');
+        });
+    }
+
+    subscribeArrow('#categories-nav-block');
+
+    subscribeArrow('#items-nav-block');
+
+</script>
+</html>

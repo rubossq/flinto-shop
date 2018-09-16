@@ -22,10 +22,12 @@
     "gulp-newer": "^1.4.0",
     "gulp-order": "^1.1.1",
     "gulp-remember": "^1.0.1",
+    "gulp-rev": "^8.1.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylus": "^2.7.0",
     "gulp-uglify": "^3.0.1",
     "nodemon": "^1.18.4",
+    "stream-combiner2": "^1.1.1",
     "stylus": "^0.54.5"
   }
 }

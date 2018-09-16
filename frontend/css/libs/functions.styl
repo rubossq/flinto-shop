@@ -10,6 +10,6 @@ spaces(property, styles...)
 
 sizes(property, styles...)
   for $i, index in $sizer
-    {'.'+property+'-' + (1 + index)}
+    {'.'+property+'-' + ( (1 + index) * 10)}
       for $s in styles
         {$s}: unit($i, '%')

@@ -1,4 +1,10 @@
 @import "libs/helpers"
+@import "libs/typo"
+
+body
+  font-family: 'Poppins', sans-serif
+  font-weight: 400
+  font-size: 14px
 
 body, a
   color: black
@@ -9,12 +15,11 @@ a:hover
 .logo
   font-size: 26px
 
-header
-  background-color: #f0f1f3
-  & nav
-    max-width: 1170px
 
-.navbar-nav a
+.image-bg
+  background-color: #f0f1f3
+
+header a
     font-size: 16px
 
 .icon
@@ -28,9 +33,12 @@ header
   user-select: none;
   cursor: pointer
 
+.pointer
+  cursor: pointer
+
 .cart-count
   color: white
-  background-color: #ff3b30
+  background-color: red
   bottom: 0
   width: 20px
   height: 20px
@@ -40,9 +48,195 @@ header
   font-size: 14px
 
 
-.not-active
-  color: #787879
+.not-active, .not-active a
+  color: #787879!important
+
+.active, a.active, .active a
+  color: black!important
+
+.underline
+  text-decoration: underline
+
+.block-l-t
+  height: 560px
+
+.block-m-t
+  height: 370px
+
+.block-r-t
+  height: 470px
+
+.block-l-b
+  height: 280px
+
+.block-m-b
+  height: 470px
+
+.block-r-b
+  height: 370px
+
+.block-l-b, .block-m-b, .block-r-b
+  margin-top: 30px
 
 
+.slider-image
+  height: 320px
+
+.slider-indicators
+  bottom: -35px
+
+.slider-indicators a
+  width: 13px
+  height: 13px
+  border: 2px solid #e5e5e5
+
+.slider-indicators .active
+  background-color: #e5e5e5!important
+
+.sale
+  background-color: green
+  color: white
+  padding: 5px 10px
+  top: 0
+  left: 0
+  text-transform: uppercase;
+  font-weight: 500
+
+.hot
+  @extends .sale
+  background-color: red
+
+.percent-sale
+  @extends .sale
+  background-color: yellow
+  color: black
+
+.new
+  @extends .sale
+  background-color: blue
+
+.add2cart
+  bottom: 30px
+  left: 0
+  right: 0
+
+.img-advantage
+  height: 70px
+
+.bg-red
+  background-color: red
+
+.emerald
+  font-family: Emerald
+
+.text-l-t
+  top: 30%
+  right:20px
+
+.text-r-t
+  top: 40%
+  left:20px
+
+.text-m-t
+  bottom: 10%
+  left: 0
+  right: 0
+  text-decoration:underline;
+  text-decoration-color: red;
+
+.text-l-b
+  top: 45%
+  left: 0
+  right: 0
+
+.border-hover
+  box-shadow: 0px 0px 0px 0px black
+  transition: box-shadow 0.3s linear
+  margin: 0.5em
+  cursor: pointer
 
 
+.border-hover:hover
+  box-shadow: 0px 0px 0px 5px black
+
+.filter-params a
+  margin-top: 10px
+  display: block
+
+.filter-category
+  margin-bottom: 17px
+  margin-top: 35px
+
+.filter-category:first-child
+  margin-top:0
+
+.filter-image
+  height: 300px
+
+.square-bg
+  width: 100%
+  padding-bottom: 90%
+  background-size: cover
+  background-position: center
+
+.page-link
+  border: 0
+
+.active-pagination
+  text-decoration: underline
+
+.yellow-bg
+  background-color: yellow
+
+.yellow
+  color: yellow
+
+.blue, a.blue
+  color: blue!important
+
+.blue-bg
+  background-color: blue
+
+.stars
+  margin-left: -3px
+
+.green
+  color: green
+
+.black-bg
+  background-color: black
+
+.white
+  color: white!important
+
+.hrmrm
+  margin-top: 0px
+
+.add2cart-center
+  padding: 5px 0
+
+.add2cart-side
+  padding: 2px 12px
+
+.add2cart-item
+  padding-top: 10px
+  padding-bottom: 10px
+
+.remove-cart-item
+  right: 10px
+  top: 0
+
+.close-modal-btn
+  bottom: 15%
+  left: 0
+  right: 0
+
+input[type="text"], textarea
+  outline: none
+  box-shadow:none !important
+
+button:focus, a:focus, input:focus, textarea:focus
+  outline: none
+
+.map
+  min-height: 400px
