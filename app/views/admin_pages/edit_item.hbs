@@ -1,0 +1,115 @@
+<main class="container-fluid no-gutters p-0 h-100">
+    <div class="row no-gutters h-100">
+        {{>admin_navbar}}
+        <div class="col-8 col-md-9 col-lg-10">
+            <div class="row no-gutters">
+                {{>admin_header}}
+            </div>
+            <div class="row no-gutters">
+                <div class="col-12 p-4">
+                    <div class="row no-gutters">
+                        <div class="col-12 mx-auto col-md-10 col-lg-6">
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <label for="alias">Alias</label>
+                                    <input type="text" class="form-control" placeholder="Alias" id="alias" name="alias">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" placeholder="Name" id="name" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="number" class="form-control" placeholder="Price" id="price" name="price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="category_id">Category</label>
+                                    <select class="form-control" id="category_id" name="category_id">
+                                        <option value="1">
+                                            Dress
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rating">Rating</label>
+                                    <select class="form-control" id="rating" name="rating">
+                                        <option value="1">
+                                            1
+                                        </option>
+                                        <option value="2">
+                                            2
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="voted_count">Voted count</label>
+                                    <input type="number" class="form-control" placeholder="Voted count" id="voted_count" name="voted_count">
+                                </div>
+                                <div class="form-group">
+                                    <label>Images</label>
+                                    <div class="container no-gutters p-0">
+                                        <div class="row no-gutters mb-1">
+                                            <div class="col-12">
+                                                <button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('inputFile').click()">Add Image</button>
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="inputFile">File Upload</label>
+                                                    <input type="file" class="form-control-file text-primary font-weight-bold" id="inputFile" accept="image/*" onchange="readUrl(this)" data-title="Drag and drop a file">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="images-block py-2 px-2 bg-white border rounded">
+                                        <div class="image-item image-bg">
+
+                                        </div>
+                                        <div class="image-item image-bg">
+
+                                        </div>
+                                        <div class="image-item image-bg">
+
+                                        </div>
+                                        <div class="image-item image-bg">
+
+                                        </div>
+                                        <div class="image-item image-bg">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="short_desc">Short desc</label>
+                                    <textarea class="form-control" id="short_desc" name="short_desc" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="desc">Desc</label>
+                                    <textarea class="form-control" id="desc" name="desc" rows="5"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tags">Tags</label>
+                                    <input type="text" class="form-control" placeholder="Tag1, tag2, tag3" id="tags" name="tags">
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" class="form-check-inline" checked id="in_stock" name="in_stock">
+                                    <label for="in_stock">In stock</label>
+                                </div>
+                                <div class="form-group">
+
+                                    <input type="checkbox" class="form-check-inline" checked id="is_active" name="is_active">
+                                    <label for="is_active">Is active</label>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-block bg-blue text-white">Save</button>
+                                </div>
+                            </form>
+                            <form id="uploadForm" style="display:none;" action="/ap/upload" method="POST" enctype="multipart/form-data">
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>

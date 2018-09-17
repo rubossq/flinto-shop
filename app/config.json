@@ -1,0 +1,18 @@
+{
+  "development":{
+    "AP_LOGIN": "admin",
+    "AP_PASSWORD": "admin",
+    "MONGO_URL": "mongodb://localhost:27017/",
+    "SESSIONS_DB": "playdb",
+    "MAIN_DB": "flintoshop",
+    "MONGO_SECRET": "secret"
+  },
+  "production":{
+    "AP_LOGIN": "admin",
+    "AP_PASSWORD": "admin",
+    "MONGO_URL": "mongodb://localhost:27017/",
+    "SESSIONS_DB": "playdb",
+    "MAIN_DB": "flintoshop",
+    "MONGO_SECRET": "secret"
+  }
+}

@@ -138,23 +138,6 @@
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/admin_panel.js"></script>
 
-<script>
-
-    function subscribeArrow(selector){
-        $(selector).on('hide.bs.collapse', function () {
-            $(selector).parent().find('.arrow').first()
-                .html('<ion-icon name="arrow-dropright"></ion-icon>');
-        });
-        $(selector).on('show.bs.collapse', function () {
-            $(selector).parent().find('.arrow').first()
-                .html('<ion-icon name="arrow-dropdown"></ion-icon>');
-        });
-    }
-
-    subscribeArrow('#categories-nav-block');
-
-    subscribeArrow('#items-nav-block');
-
-</script>
 </html>

@@ -12,7 +12,7 @@
 
 <main class="container-fluid no-gutters p-0 h-100">
     <div class="row no-gutters h-100">
-        <aside class="col-4 h-100">
+        <aside class="col-4 col-md-3 col-lg-2 h-100">
             <header class="container-fluid no-gutters p-0">
                 <div class="row no-gutters">
                     <div class="bg-black col-12 py-4 px-3 text-center">
@@ -89,7 +89,7 @@
                 </div>
             </nav>
         </aside>
-        <div class="col-8">
+        <div class="col-8 col-md-9 col-lg-10">
             <div class="row no-gutters">
                 <header class="container-fluid no-gutters p-0 bg-blue">
                     <div class="row no-gutters">
@@ -108,24 +108,21 @@
             </div>
             <div class="row no-gutters">
                 <div class="col-12 p-4">
-                    <div class="row no-gutters d-flex justify-content-between">
-                        <div class="col-4 text-white pr-3">
-                            <div class="px-3 py-2 bg-red ">
-                                <div><span class="text-uppercase">Categories</span></div>
-                                <div class="small-text"><span class="big-text f-medium text-uppercase">112</span> total</div>
-                            </div>
-                        </div>
-                        <div class="col-4 text-white">
-                            <div class="px-3 py-2 bg-blue ">
-                                <div><span class="text-uppercase">Items</span></div>
-                                <div class="small-text"><span class="big-text f-medium text-uppercase">1112</span> total</div>
-                            </div>
-                        </div>
-                        <div class="col-4 pl-3 text-white">
-                            <div class="px-3 py-2 bg-green">
-                                <div><span class="text-uppercase">Orders</span></div>
-                                <div class="small-text"><span class="big-text f-medium text-uppercase">2112</span> total</div>
-                            </div>
+                    <div class="row no-gutters">
+                        <div class="col-12 mx-auto col-md-10 col-lg-6">
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <label for="name">Alias</label>
+                                    <input type="text" class="form-control" placeholder="Alias" id="alias" name="alias">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" placeholder="Name" id="name" name="name">
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-block bg-blue text-white">Save</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -140,23 +137,6 @@
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/admin_panel.js"></script>
 
-<script>
-
-    function subscribeArrow(selector){
-        $(selector).on('hide.bs.collapse', function () {
-            $(selector).parent().find('.arrow').first()
-                .html('<ion-icon name="arrow-dropright"></ion-icon>');
-        });
-        $(selector).on('show.bs.collapse', function () {
-            $(selector).parent().find('.arrow').first()
-                .html('<ion-icon name="arrow-dropdown"></ion-icon>');
-        });
-    }
-
-    subscribeArrow('#categories-nav-block');
-
-    subscribeArrow('#items-nav-block');
-
-</script>
 </html>

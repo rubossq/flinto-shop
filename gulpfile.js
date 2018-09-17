@@ -18,16 +18,28 @@ const cached = require('gulp-cached');
 const rev = require('gulp-rev');
 const browserSync = require('browser-sync').create();
 const combine = require('stream-combiner2').obj;
+const eslint = require('gulp-eslint');
+
 
 let isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
-//isDev = false;
+
 gulp.task('prepare:scripts', function () {
     return gulp.src(['frontend/js/jquery-3.3.1.min.js',
         'frontend/js/bootstrap.min.js', 'frontend/js/**/*.js'])
         .pipe(cached('scripts'))
         .pipe(remember('scripts'))
+        .pipe(gulpIf(function(file){
+            return !file.relative.includes('jquery') && !file.relative.includes('bootstrap');
+        }, combine(eslint({configFile: '.eslintrc.client.json'}), eslint.format(), eslint.failAfterError())))
         .pipe(gulpIf(isDev, sourcemaps.init()))
-        .pipe(gulpIf(!isDev, combine(uglify(), concat('all.js'))))
+        .pipe(gulpIf(!isDev,
+            combine(
+                uglify(),
+                gulpIf(function(file){
+                    return file.relative.indexOf('admin') === -1;
+                }, concat('all.js'))
+            )
+        ))
         .pipe(gulpIf(isDev, sourcemaps.write()))
         .pipe(gulp.dest('public/js'))
         .pipe(gulpIf(!isDev, combine(rev.manifest('js.json'), gulp.dest('manifest'))));
@@ -64,7 +76,6 @@ gulp.task('prepare:styles', function () {
 gulp.task('prepare:assets', function () {
     return gulp.src(['frontend/**/*.*', '!frontend/css/**/*.*',
         '!frontend/js/**/*.js'])
-        .pipe(debug('assets'))
         .pipe(newer('public'))
         .pipe(gulp.dest('public'));
 });

@@ -12,7 +12,7 @@
 
 <main class="container-fluid no-gutters p-0 h-100">
     <div class="row no-gutters h-100">
-        <aside class="col-4 h-100">
+        <aside class="col-4 col-md-3 col-lg-2 h-100">
             <header class="container-fluid no-gutters p-0">
                 <div class="row no-gutters">
                     <div class="bg-black col-12 py-4 px-3 text-center">
@@ -89,7 +89,7 @@
                 </div>
             </nav>
         </aside>
-        <div class="col-8">
+        <div class="col-8 col-md-9 col-lg-10">
             <div class="row no-gutters">
                 <header class="container-fluid no-gutters p-0 bg-blue">
                     <div class="row no-gutters">
@@ -140,23 +140,6 @@
 
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/admin_panel.js"></script>
 
-<script>
-
-    function subscribeArrow(selector){
-        $(selector).on('hide.bs.collapse', function () {
-            $(selector).parent().find('.arrow').first()
-                .html('<ion-icon name="arrow-dropright"></ion-icon>');
-        });
-        $(selector).on('show.bs.collapse', function () {
-            $(selector).parent().find('.arrow').first()
-                .html('<ion-icon name="arrow-dropdown"></ion-icon>');
-        });
-    }
-
-    subscribeArrow('#categories-nav-block');
-
-    subscribeArrow('#items-nav-block');
-
-</script>
 </html>
