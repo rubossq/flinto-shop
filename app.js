@@ -14,6 +14,15 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const fs = require('fs');
 
+// Bootstrap models
+fs.readdirSync(path.join(__dirname, Constant.APP_MODELS))
+    .filter(function(file){
+        return file.indexOf('.js');
+    })
+    .forEach(function(file){
+        require(path.join(path.join(__dirname, Constant.APP_MODELS), file));
+    });
+
 let main = require('./app/routes/main');
 let admin = require('./app/routes/admin');
 let hbs = require('hbs');
@@ -32,15 +41,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Bootstrap models
-fs.readdirSync(path.join(__dirname, Constant.APP_MODELS))
-    .filter(function(file){
-        return file.indexOf('.js');
-    })
-    .forEach(function(file){
-        require(path.join(path.join(__dirname, Constant.APP_MODELS), file));
-    });
 
 app.use(session({
     store: new MongoStore({url: Config.MONGO_URL + Config.SESSIONS_DB}),

@@ -1,6 +1,20 @@
 let express = require('express');
 let router = express.Router();
 
+let passport = require('../passport/passport');
+
+
+
+router.get('/login', function(req, res, next) {
+    res.render('admin_pages/login', { layout:'layouts/admin_layout', title: 'Login'});
+});
+
+router.post('/login', passport.login);
+
+router.get('/register', passport.register);
+
+router.use(passport.isAuth);
+
 router.get('/', function(req, res, next) {
     res.render('admin_pages/index', { layout:'layouts/admin_layout', title: 'Admin panel', afterBody: '<script src="js/admin_panel.js"></script>'});
 });
@@ -21,9 +35,9 @@ router.get('/catalog/:category', function(req, res, next) {
     res.render('admin_pages/items', { layout:'layouts/admin_layout', title: 'Items', afterBody: '<script src="js/admin_panel.js"></script>'});
 });
 
-router.get('/login', function(req, res, next) {
-    res.render('admin_pages/login', { layout:'layouts/admin_layout', title: 'Login'});
-});
+router.get('/logout', passport.logout);
+
+
 
 
 module.exports = router;

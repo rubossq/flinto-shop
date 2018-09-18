@@ -52,11 +52,14 @@ module.exports.login = function (req, res, next) {
 
 module.exports.logout = function (req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/admin');
 };
 
 module.exports.register = function (req, res, next) {
-    let user = new User({username: req.body.username, password: req.body.password});
+    let username = req.body.username || req.query.username;
+    let password = req.body.password || req.query.password;
+
+    let user = new User({username: username, password: password});
     user.save(function (err) {
         return err
             ? next(err)
@@ -66,4 +69,10 @@ module.exports.register = function (req, res, next) {
                     : res.redirect('/admin');
             });
     });
+};
+
+module.exports.isAuth = function (req, res, next){
+    req.isAuthenticated()
+        ? next()
+        : res.redirect('/admin/login');
 };

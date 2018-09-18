@@ -9,6 +9,6 @@ function subscribeArrow(selector){
     });
 }
 
-subscribeArrow('#categories-nav-block');
+subscribeArrow('#categories-nav-block2');
 
 subscribeArrow('#items-nav-block');

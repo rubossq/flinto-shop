@@ -19,7 +19,7 @@ const rev = require('gulp-rev');
 const browserSync = require('browser-sync').create();
 const combine = require('stream-combiner2').obj;
 const eslint = require('gulp-eslint');
-
+const nodemon = require('gulp-nodemon');
 
 let isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
 
@@ -107,6 +107,41 @@ gulp.task('watch', function () {
     });
     gulp.watch(['frontend/**/*.*', '!frontend/css/**/*.*',
         '!frontend/js/**/*.js'], gulp.series('prepare:assets'));
+
+});
+
+
+gulp.task('nodemon', function (cb) {
+
+    let started = false;
+
+    return nodemon({
+        script: 'app.js',
+        watch: [
+            'app'
+        ],
+        ext: "js hbs"
+    }).on('start', function () {
+        if (!started) {
+            cb();
+            started = true;
+        }
+    }).on('restart', function () {
+        setTimeout(function(){
+            browserSync.reload({ stream: false });
+        }, 100);
+    });
+});
+
+
+
+gulp.task('browser-sync', function () {
+    browserSync.init(null, {
+        proxy: "http://localhost:8000",
+        files: ["public/**/*.*"],
+        browser: "google chrome",
+        port: 7000,
+    });
 });
 
 gulp.task('serve', function () {
@@ -119,5 +154,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('dev', gulp.series('build', gulp.parallel('watch', 'serve')));
+
+gulp.task('default', gulp.series('build', 'nodemon', gulp.parallel('watch', 'browser-sync')));
 
 
