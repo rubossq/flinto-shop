@@ -1,0 +1,24 @@
+<a href="/catalog/{{this.category.alias}}/{{this.alias}}" class="row no-gutters">
+    <div class="col-4">
+        <div class="image-bg square-bg" style="background-image: url('{{this.preview}}')">
+
+        </div>
+    </div>
+    <div class="col-8 pl-2">
+        <div>
+            <span class="active">{{this.name}}</span>
+        </div>
+        <div class="yellow big-text stars">
+            {{#each this.stars}}
+                {{#ifCond this.type 'full'}}
+                    <ion-icon name="star"></ion-icon>
+                {{else}}
+                    <ion-icon name="star-outline"></ion-icon>
+                {{/ifCond}}
+            {{/each}}
+        </div>
+        <div>
+            <span>${{this.price}}.00</span>
+        </div>
+    </div>
+</a>

@@ -1,3 +1,4 @@
+var baseUrl = '';
 function subscribeArrow(selector){
     $(selector).on('hide.bs.collapse', function () {
         $(selector).parent().find('.arrow').first()
@@ -12,3 +13,7 @@ function subscribeArrow(selector){
 subscribeArrow('#categories-nav-block2');
 
 subscribeArrow('#items-nav-block');
+
+function setBaseUrl(url){
+    baseUrl = url;
+}

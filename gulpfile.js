@@ -20,8 +20,10 @@ const browserSync = require('browser-sync').create();
 const combine = require('stream-combiner2').obj;
 const eslint = require('gulp-eslint');
 const nodemon = require('gulp-nodemon');
+const imagemin = require('gulp-imagemin');
 
 let isDev = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+let disableHtml = true;
 
 gulp.task('prepare:scripts', function () {
     return gulp.src(['frontend/js/jquery-3.3.1.min.js',
@@ -77,7 +79,12 @@ gulp.task('prepare:assets', function () {
     return gulp.src(['frontend/**/*.*', '!frontend/css/**/*.*',
         '!frontend/js/**/*.js'])
         .pipe(newer('public'))
-        .pipe(gulp.dest('public'));
+        .pipe(gulpIf(function(file){
+            return ~['jpg', 'jpeg', 'png'].indexOf(file.relative.split('.').pop());
+        }, imagemin()))
+        .pipe(gulpIf(disableHtml && function(file){
+            return file.relative.indexOf('.html') === -1;
+        }, gulp.dest('public')));
 });
 
 gulp.task('clean', function () {
@@ -118,7 +125,8 @@ gulp.task('nodemon', function (cb) {
     return nodemon({
         script: 'app.js',
         watch: [
-            'app'
+            'app',
+            'app.js'
         ],
         ext: "js hbs"
     }).on('start', function () {
@@ -129,18 +137,16 @@ gulp.task('nodemon', function (cb) {
     }).on('restart', function () {
         setTimeout(function(){
             browserSync.reload({ stream: false });
-        }, 100);
+        }, 1000);
     });
 });
-
-
 
 gulp.task('browser-sync', function () {
     browserSync.init(null, {
         proxy: "http://localhost:8000",
         files: ["public/**/*.*"],
         browser: "google chrome",
-        port: 7000,
+        port: 5000,
     });
 });
 

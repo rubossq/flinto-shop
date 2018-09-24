@@ -1,3 +1,4 @@
+
 function readUrl(input) {
 
     if (input.files && input.files[0]) {
@@ -8,8 +9,9 @@ function readUrl(input) {
             input.setAttribute("data-title", imgName);
             var blob = dataURItoBlob(imgData);
             var fd = new FormData(document.getElementById('#uploadForm'));
-            fd.append("inputImage", blob);
+            fd.append("photo", blob);
 
+            upload(fd);
 
         };
         reader.readAsDataURL(input.files[0]);
@@ -17,24 +19,44 @@ function readUrl(input) {
 
 }
 
+function removeImage(el, alias, src, folder){
+
+    $.ajax({
+        url: baseUrl+"/"+alias+"/images/remove",
+        type: 'POST',
+        dataType: "json",
+        data: JSON.stringify({name: src.split('/').pop(), folder: folder}),
+        contentType: "application/json",
+        success: function (data) {
+            if(data.result === 'ok'){
+                $(el).parent().remove();
+            }else{
+                alert('some error while removing');
+            }
+
+        }
+    });
+
+}
+
 function upload(formData){
 
     $.ajax({
-        url: "/ap/upload",
+        url: baseUrl+"/upload",
         type: 'POST',
         data: formData,
         success: function (data) {
-            if(data.ok === 'yes'){
-                $("#successAlert").fadeIn('fast');
+            console.log(data);
+            if(data.result === 'ok'){
+                var el = $(".templateImageBlock").eq(0).clone();
+                el.removeClass('templateImageBlock');
+                var html = el[0].outerHTML;
+                html = html.replace(/%src%/g, data.src);
+                console.log(html);
+                $('.images-block').eq(0).append(html);
             }else{
-                $("#errorAlert").fadeIn('fast');
+                alert('some error while uploading');
             }
-
-            setTimeout(function(){
-                $("#successAlert").fadeOut('fast');
-                $("#errorAlert").fadeOut('fast');
-            }, 1500);
-
         },
         cache: false,
         contentType: false,
@@ -50,3 +72,4 @@ function dataURItoBlob(dataURI) {
     }
     return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
 }
+

@@ -17,7 +17,9 @@ a:hover
 
 
 .image-bg
-  background-color: #f0f1f3
+  background-color: gray
+  background-size: cover
+  background-position: center
 
 header a
     font-size: 16px
@@ -126,6 +128,12 @@ header a
 .bg-red
   background-color: red
 
+.red
+  color: red
+
+.bg-gray
+  background-color: gray
+
 .emerald
   font-family: Emerald
 
@@ -222,6 +230,12 @@ header a
   padding-top: 10px
   padding-bottom: 10px
 
+.add2cart div:hover .heart
+  color: red
+
+.add2cart div:hover
+  font-weight: 500
+
 .remove-cart-item
   right: 10px
   top: 0
@@ -240,3 +254,19 @@ button:focus, a:focus, input:focus, textarea:focus
 
 .map
   min-height: 400px
+
+.cart-alert
+  bottom: 5%
+  left: 0
+  right: 0
+  z-index: 1001
+
+.overflow-y
+  overflow-y: auto
+
+.change-bg
+  background-color: transparent
+
+@media (max-width: 991px)
+  .change-bg
+    background-color: gray

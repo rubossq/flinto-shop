@@ -1,107 +1,137 @@
 <main class="container-fluid no-gutters p-0 h-100">
     <div class="row no-gutters h-100">
         {{>admin_navbar}}
-        <div class="col-8 col-md-9 col-lg-10">
+        <div class="col-8 col-md-9">
             <div class="row no-gutters">
                 {{>admin_header}}
             </div>
             <div class="row no-gutters">
                 <div class="col-12 p-4">
-                    <div class="row no-gutters">
+                    {{#if item.alias}}
+                        <div class="row no-gutters">
+                            <div class="col-12 mx-auto col-md-10 col-lg-6 d-flex justify-content-between">
+                                <a class="btn btn-primary" href="{{baseUrl}}/copy/{{item.alias}}" ><ion-icon class="align-middle big-text" name="copy"></ion-icon> Clone</a>
+                                <a class="btn btn-danger" href="{{baseUrl}}/remove/{{item.alias}}" ><ion-icon class="align-middle big-text" name="trash"></ion-icon> Remove</a>
+                            </div>
+                        </div>
+                    {{/if}}
+                    <div class="row no-gutters mt-3">
                         <div class="col-12 mx-auto col-md-10 col-lg-6">
                             <form action="" method="POST">
                                 <div class="form-group">
                                     <label for="alias">Alias</label>
-                                    <input type="text" class="form-control" placeholder="Alias" id="alias" name="alias">
+                                    <input value="{{item.alias}}" type="text" class="form-control" placeholder="Alias" id="alias" name="alias"
+                                           min="3" max="30" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" placeholder="Name" id="name" name="name">
+                                    <input value="{{item.name}}" type="text" class="form-control" placeholder="Name" id="name" name="name"
+                                           min="3" max="30" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="price">Price</label>
-                                    <input type="number" class="form-control" placeholder="Price" id="price" name="price">
+                                    <input value="{{item.price}}" type="number" class="form-control" placeholder="Price" id="price"
+                                           name="price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sale">Sale</label>
+                                    <input value="{{#if item.sale}}{{item.sale}}{{else}}0{{/if}}" type="number" class="form-control" placeholder="Sale" id="sale"
+                                           name="sale">
                                 </div>
                                 <div class="form-group">
                                     <label for="category_id">Category</label>
                                     <select class="form-control" id="category_id" name="category_id">
-                                        <option value="1">
-                                            Dress
-                                        </option>
+                                        {{#if item.rating}}
+                                            <option value="{{item.category._id}}">
+                                                {{item.category.name}}
+                                            </option>
+                                        {{/if}}
+                                        {{#each categories}}
+                                            <option value="{{_id}}">
+                                                {{name}}
+                                            </option>
+                                        {{/each}}
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="rating">Rating</label>
                                     <select class="form-control" id="rating" name="rating">
-                                        <option value="1">
-                                            1
-                                        </option>
-                                        <option value="2">
-                                            2
-                                        </option>
+                                        {{#if item.rating}}
+                                            <option value="{{item.rating}}">
+                                                {{item.rating}}
+                                            </option>
+                                        {{/if}}
+                                        {{#each ratings}}
+                                            <option value="{{this}}">
+                                                {{this}}
+                                            </option>
+                                        {{/each}}
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="voted_count">Voted count</label>
-                                    <input type="number" class="form-control" placeholder="Voted count" id="voted_count" name="voted_count">
+                                    <input value="{{item.voted_count}}" type="number" class="form-control" placeholder="Voted count" id="voted_count"
+                                           name="voted_count" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Images</label>
                                     <div class="container no-gutters p-0">
                                         <div class="row no-gutters mb-1">
                                             <div class="col-12">
-                                                <button type="button" class="btn btn-primary btn-block" onclick="document.getElementById('inputFile').click()">Add Image</button>
+                                                <button type="button" class="btn btn-primary btn-block"
+                                                        onclick="document.getElementById('inputFile').click()">Add Image
+                                                </button>
                                                 <div class="form-group">
                                                     <label class="sr-only" for="inputFile">File Upload</label>
-                                                    <input type="file" class="form-control-file text-primary font-weight-bold" id="inputFile" accept="image/*" onchange="readUrl(this)" data-title="Drag and drop a file">
+                                                    <input type="file"
+                                                           class="form-control-file text-primary font-weight-bold"
+                                                           id="inputFile" accept="image/*" onchange="readUrl(this)"
+                                                           data-title="Drag and drop a file">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="images-block py-2 px-2 bg-white border rounded">
-                                        <div class="image-item image-bg">
-
-                                        </div>
-                                        <div class="image-item image-bg">
-
-                                        </div>
-                                        <div class="image-item image-bg">
-
-                                        </div>
-                                        <div class="image-item image-bg">
-
-                                        </div>
-                                        <div class="image-item image-bg">
-
-                                        </div>
+                                    <div class="images-block py-2 px-2 bg-light border rounded">
+                                        {{#each item.images}}
+                                            <div class="image-item image-bg position-relative" style="background-image:url('{{this}}')">
+                                                <div onclick="removeImage(this, '{{../item.alias}}', '{{this}}')" class="remove-image pointer position-absolute">
+                                                    <ion-icon class="align-middle very-big-text text-danger" name="close-circle-outline"></ion-icon>
+                                                </div>
+                                            </div>
+                                        {{/each}}
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="short_desc">Short desc</label>
-                                    <textarea class="form-control" id="short_desc" name="short_desc" rows="3"></textarea>
+                                    <textarea class="form-control" id="short_desc" name="short_desc"
+                                              cols='60' rows="3">{{{item.short_desc}}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="desc">Desc</label>
-                                    <textarea class="form-control" id="desc" name="desc" rows="5"></textarea>
+                                    <textarea class="form-control" id="desc" name="desc" cols='60' rows="5">{{{item.desc}}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="tags">Tags</label>
-                                    <input type="text" class="form-control" placeholder="Tag1, tag2, tag3" id="tags" name="tags">
+                                    <input value="{{item.tags}}" type="text" class="form-control" placeholder="Tag1, tag2, tag3" id="tags"
+                                           name="tags"  max="150" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="checkbox" class="form-check-inline" checked id="in_stock" name="in_stock">
+                                    <input type="checkbox" class="form-check-inline" {{#if item.in_stock}}checked{{/if}} id="in_stock"
+                                           name="in_stock">
                                     <label for="in_stock">In stock</label>
                                 </div>
                                 <div class="form-group">
 
-                                    <input type="checkbox" class="form-check-inline" checked id="is_active" name="is_active">
+                                    <input type="checkbox" class="form-check-inline" {{#if item.is_active}}checked{{/if}}  id="is_active"
+                                           name="is_active">
                                     <label for="is_active">Is active</label>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-block bg-blue text-white">Save</button>
                                 </div>
                             </form>
-                            <form id="uploadForm" style="display:none;" action="/ap/upload" method="POST" enctype="multipart/form-data">
+                            <form id="uploadForm" style="display:none;" action="{{baseUrl}}/upload" method="POST"
+                                  enctype="multipart/form-data">
 
                             </form>
                         </div>
@@ -110,6 +140,13 @@
             </div>
         </div>
     </div>
-
-
 </main>
+
+<div class="d-none">
+    <div class="templateImageBlock image-item image-bg position-relative" style="background-image:url('%src%')">
+        <div onclick="removeImage(this, '{{item.alias}}', '%src%', 'tmp')" class="remove-image pointer position-absolute">
+            <ion-icon class="align-middle very-big-text text-danger" name="close-circle-outline"></ion-icon>
+        </div>
+    </div>
+</div>
+

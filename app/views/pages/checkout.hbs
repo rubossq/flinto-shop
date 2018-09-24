@@ -7,7 +7,7 @@
     <div class="text-center pb-2 f-medium">
         <span class="mb-3 header-2-text f-light">Checkout</span>
         <div class="not-active mb-2">
-            <a href="#">Your cart</a>
+            <a href="/cart">Your cart</a>
             <span> &nbsp; > &nbsp; </span>
             <a class="active" href="#">Checkout</a>
         </div>
@@ -89,61 +89,46 @@
                             aria-controls="orderSummary"
                             class="d-flex justify-content-between regular-text btn btn-light w-100 d-md-none d-block">
                         <span class="blue small-text"><ion-icon class="big-text align-middle" name="cart"></ion-icon> Show order summary<span
-                                class="align-middle"> (2)</span> ></span> <span>$129.00</span>
+                                class="align-middle"> (2)</span> ></span> <span>${{summary}}.00</span>
                     </button>
                     <div id="orderSummary" class="col-12 collapse d-print-none d-md-block">
                         <div class="text-center big-text mb-2">
                             <span>Order summary</span>
                         </div>
                         <div class="col-12 pr-3">
-                            <div class="row no-gutters position-relative">
-                                <div class="col-12">
-                                    <div class="row no-gutters d-flex align-items-center">
-                                        <div class="col-3 col-md-4">
-                                            <div class="image-bg square-bg"></div>
-                                        </div>
-                                        <div class="col-9 col-md-8 pl-3 small-text">
-                                            <div class="f-medium pr-2">Flowy some dress</div>
-                                            <div class="not-active">$59.00</div>
-                                            <div class="mt-md-2">
-                                                <div class="not-active">M / Blue</div>
+                            {{#each items}}
+                                <div class="row no-gutters position-relative">
+                                    <div class="col-12">
+                                        <div class="row no-gutters d-flex align-items-center">
+                                            <div class="col-3 col-md-4">
+                                                <div class="image-bg square-bg" style="background-image: url('{{this.preview}}')"></div>
+                                            </div>
+                                            <div class="col-9 col-md-8 pl-3 small-text">
+                                                <div class="f-medium pr-2">{{this.name}}</div>
+                                                <div class="not-active">${{this.price}}.00</div>
+                                                <div class="mt-md-2">
+                                                    <div class="not-active">M / Blue</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row no-gutters position-relative">
-                                <div class="col-12">
-                                    <div class="row no-gutters d-flex align-items-center">
-                                        <div class="col-3 col-md-4">
-                                            <div class="image-bg square-bg"></div>
-                                        </div>
-                                        <div class="col-9 col-md-8 pl-3 small-text">
-                                            <div class="f-medium pr-2">Flowy some dress</div>
-                                            <div class="not-active">$59.00</div>
-                                            <div class="mt-md-2">
-                                                <div class="not-active">M / Blue</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
+                                <hr>
+                            {{/each}}
                         </div>
 
                         <div class="col-12 ">
                             <div class="image-bg">
                                 <div class="row no-gutters p-3 pb-0">
                                     <div class="col-6 text-left">
-                                        <div class="my-1"><span class="f-medium">2</span><span> items</span></div>
+                                        <div class="my-1"><span class="f-medium">{{size}}</span><span> items</span></div>
                                         <div class="my-1"><span>Shipping</span></div>
                                         <div class="my-1"><span>Taxes</span></div>
                                     </div>
                                     <div class="col-6 text-right">
-                                        <div class="my-1"><span>$42.00</span></div>
-                                        <div class="my-1"><span>$42.00</span></div>
-                                        <div class="my-1"><span>$42.00</span></div>
+                                        <div class="my-1"><span>${{totalPrice}}.00</span></div>
+                                        <div class="my-1"><span>${{shipping}}.00</span></div>
+                                        <div class="my-1"><span>${{taxes}}.00</span></div>
                                     </div>
                                 </div>
                                 <div class="row no-gutters px-3">
@@ -157,7 +142,7 @@
                                         <div class="my-1 big-text text-uppercase"><span>Total</span></div>
                                     </div>
                                     <div class="col-6 text-right">
-                                        <div class="my-1"><span class="big-text f-medium">$42.00</span></div>
+                                        <div class="my-1"><span class="big-text f-medium">${{summary}}.00</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -175,13 +160,13 @@
 
         <div class="row no-gutters d-flex justify-content-between align-items-center">
             <div>
-                <a class="blue mr-2" href="#">
+                <a class="blue mr-2" href="/qa/privacy">
                     Privacy policy
                 </a>
-                <a class="blue mr-2" href="#">
+                <a class="blue mr-2" href="/qa/terms">
                     Our terms
                 </a>
-                <a class="blue mr-2" href="#">
+                <a class="blue mr-2" href="/qa/refund">
                     Refund policy
                 </a>
             </div>

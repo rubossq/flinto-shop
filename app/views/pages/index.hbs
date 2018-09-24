@@ -1,18 +1,18 @@
 {{>search}}
 {{>action}}
-<header class="image-bg">
+<header class="image-bg" style="background-image: url('images/header.png')">
     {{>nav}}
     <div class="mt-10 text-center pb-10 f-medium">
         <span class="mb-3 header-text f-light">New Arrivals</span>
         <div class="row no-gutters d-flex justify-content-center">
             <div class="col-12 col-md-5 text-md-right text-center">
-                <a class="underline" href="#">Woman Collection</a>
+                <a class="underline" href="#">Women's Collection</a>
             </div>
             <div class="col-12 col-md-1">
                 <ion-icon class="icon align-bottom px-3" name="hourglass"></ion-icon>
             </div>
             <div class="col-12 col-md-5 text-md-left text-center">
-                <a class="underline" href="#">&nbsp; Man Collection &nbsp;</a>
+                <a class="underline" href="#">&nbsp; Men's Collection &nbsp;</a>
             </div>
 
         </div>
@@ -22,27 +22,27 @@
     <div class="container no-gutters mx-auto">
         <div class="row">
             <div class="col-12 col-md-4 px-0">
-                <div class="block-l-t image-bg position-relative border-hover">
+                <div class="block-l-t image-bg position-relative border-hover" style="background-image: url('images/woman.jpg')">
                     <div class="text-right position-absolute text-l-t very-big-text">
                         <span class="emerald">for</span>
                         <br>
                         <span class="f-medium">Women</span>
                     </div>
                 </div>
-                <div class="block-l-b image-bg position-relative border-hover mt-3">
+                <div class="block-l-b image-bg position-relative border-hover mt-3" style="background-image: url('images/hat.jpg')">
                     <div class="position-absolute text-l-b sub-header-text mx-auto text-center">
-                        <span class="emerald">Trending items</span>
+                        <span class="emerald text-white">Trending items</span>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-4 px-0">
-                <div class="block-m-t image-bg border border-dark position-relative border-hover">
+                <div class="block-m-t image-bg border border-dark position-relative border-hover" style="background-image: url('images/best.jpg')">
                     <div class="position-absolute text-m-t header-2-text mx-auto text-center">
-                        <span class="emerald">Best Deals</span>
+                        <span class="emerald text-white">Best Deals</span>
                     </div>
                 </div>
 
-                <div class="block-m-b image-bg position-relative border-hover mt-3">
+                <div class="block-m-b image-bg position-relative border-hover mt-3" style="background-image: url('images/watch.jpg')">
                     <div class="position-absolute add2cart text-center">
                         <a class="bg-white p-3 f-semibold big-text" href="javascript:void(0)">
                             <span>Accessoires</span>
@@ -51,14 +51,14 @@
                 </div>
             </div>
             <div class="col-12 col-md-4 px-0">
-                <div class="block-r-t image-bg border-hover position-relative">
+                <div class="block-r-t image-bg border-hover position-relative" style="background-image: url('images/man.jpg')">
                     <div class="text-left position-absolute text-r-t very-big-text">
                         <span class="emerald">for</span>
                         <br>
                         <span class="f-medium">Men</span>
                     </div>
                 </div>
-                <div class="block-r-b image-bg position-relative border-hover mt-3">
+                <div class="block-r-b image-bg position-relative border-hover mt-3" style="background-image: url('images/shoes.jpg')">
                     <div class="position-absolute add2cart text-center">
                         <a class="bg-white p-3 f-semibold big-text" href="javascript:void(0)">
                             <span>Shoes</span>
@@ -101,56 +101,28 @@
                     <div class="carousel-item active">
                         <div class="container no-gutters">
                             <div class="row">
-                                <div class="col-12 col-md-6 col-lg-3 px-2 mb-3">
-                                    <div class="image-bg square-bg position-relative">
-                                        <div class="sale position-absolute">
-                                            sale
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="big-text">Barton Sunglasses</span>
-                                        <br>
-                                        <span class="not-active">194.00 USD</span>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-3 px-2 mb-3">
-                                    <div class="image-bg square-bg position-relative">
+                                {{#each bestItems}}
+                                    {{>medium_item}}
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container no-gutters">
+                            <div class="row">
+                                {{#each newestItems}}
+                                    {{>medium_item}}
+                                {{/each}}
 
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="big-text">Barton Sunglasses</span>
-                                        <br>
-                                        <span class="not-active">194.00 USD</span>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-3 px-2 mb-3">
-                                    <div class="image-bg square-bg position-relative">
-                                        <div class="hot position-absolute">
-                                            hot
-                                        </div>
-                                        <div class="position-absolute add2cart text-center">
-                                            <a class="bg-white p-3" href="javascript:void(0)">
-                                                <span>ADD TO CART &nbsp; | &nbsp; <ion-icon class="align-top big-text"
-                                                                                            name="heart-empty"></ion-icon></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="big-text">Barton Sunglasses</span>
-                                        <br>
-                                        <span class="not-active">194.00 USD</span>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-3 px-2 mb-3">
-                                    <div class="image-bg square-bg position-relative">
-
-                                    </div>
-                                    <div class="text-center">
-                                        <span class="big-text">Barton Sunglasses</span>
-                                        <br>
-                                        <span class="not-active">194.00 USD</span>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container no-gutters">
+                            <div class="row">
+                                {{#each salesItems}}
+                                    {{>medium_item}}
+                                {{/each}}
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 <!-- Search Modal Start -->
 <div class="modal" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
-    <div class="image-bg h-100 position-relative">
+    <div class="image-bg h-100 position-relative overflow-y">
         <div class="container no-gutters mx-auto px-3 pt-3">
             <div class="row no-gutters text-center">
                 <div class="col-12">
@@ -9,42 +9,42 @@
             </div>
             <div class="row no-gutters text-center bg-white mt-4">
                 <div class="col-12 border-bottom">
-                    <form action="" method="post">
-                        <div class="form-row mx-0">
-                            <input class="col-11 form-control rounded-0 border-0" type="text" name="search"
-                                   id="search" placeholder="Enter your item" required>
-                            <button class="text-center col-1 very-big-text btn btn-light border-0 rounded-0"
-                                    type="submit">
-                                <ion-icon class="align-middle" name="search"></ion-icon>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-12 border-bottom">
-                    <div class="row no-gutters p-3 d-flex align-items-center">
-                        <div class="col-2 col-lg-1">
-                            <div class="image-bg square-bg">
-
-                            </div>
-                        </div>
-                        <div class="col-9 text-left f-medium pl-2 big-text"> Bagpack with buckles</div>
+                    <div class="form-row mx-0">
+                        <input class="col-11 form-control rounded-0 border-0" type="text" name="search"
+                               id="search" placeholder="Enter your item" required>
+                        <button onclick="search()" class="text-center col-1 very-big-text btn btn-light border-0 rounded-0"
+                                type="submit">
+                            <ion-icon class="align-middle" name="search"></ion-icon>
+                        </button>
                     </div>
                 </div>
-                <div class="col-12 border-bottom">
+                <div id="itemsCountSearch" class="col-12 border-bottom" style="display:none">
                     <div class="row no-gutters p-3 d-flex align-items-center">
-                        <div class="col-2 col-lg-1">
-                            <div class="image-bg square-bg">
-
-                            </div>
-                        </div>
-                        <div class="col-9 text-left f-medium pl-2 big-text"> Bagpack with buckles</div>
+                        <span class="small-text f-semibold">We found <span id="itemsCountSearchVal"></span> items</span>
                     </div>
+                </div>
+
+                <div class="searchResultBlock row no-gutters">
+
                 </div>
             </div>
         </div>
-        <div class="close-modal-btn text-uppercase text-center underline position-absolute mx-auto f-medium big-text pointer"
+        <div class="close-modal-btn text-uppercase text-center underline mx-auto mt-5 f-medium big-text pointer"
              data-dismiss="modal" aria-label="Close"> close
         </div>
     </div>
 </div>
 <!-- Search Modal End -->
+
+<div class="d-none">
+    <div class="templateSearchItem col-12 border-bottom">
+        <a href="/catalog/%category_alias%/%item_alias%" class="row no-gutters p-3 d-flex align-items-center">
+            <div class="col-2 col-lg-1">
+                <div class="image-bg square-bg" style="background-image: url('%preview%')">
+
+                </div>
+            </div>
+            <div class="col-9 text-left f-medium pl-2 big-text">%name%</div>
+        </a>
+    </div>
+</div>

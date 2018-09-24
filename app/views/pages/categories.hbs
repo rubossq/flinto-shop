@@ -2,7 +2,7 @@
 <header class="image-bg">
     {{>nav}}
     <div class="mt-5 text-center pb-10 f-medium">
-        <span class="mb-3 header-2-text f-light">Filters</span>
+        <span class="mb-3 header-2-text f-light">Filters 3</span>
         <div class="not-active">
             <a href="#">Shop</a>
             <span> &nbsp; > &nbsp; </span>
@@ -13,133 +13,86 @@
 <main class="mt-4 mx-auto">
     <div class="container no-gutters f-medium not-active mx-auto text-center px-3">
         <div class="row no-gutters">
-            <aside class="d-none d-lg-block col-4 text-left pl-5">
+            <button type="button" data-toggle="collapse" data-target="#filters" aria-expanded="false"
+                    aria-controls="filters"
+                    class="btn w-100 d-md-none d-block mb-2 border rounded-0 bg-gray">
+                        <span class="blue f-medium big-text">Show filters</span>
+            </button>
+            <aside id="filters" class="col-12 col-md-4 text-left pl-md-5 pb-md-0 pb-3 collapse d-print-none d-md-block">
+                <div class="filter-category">
+                    <span class="big-text active">Filter</span>
+                </div>
+                <div class="filter-params">
+                    <a class="{{#ifCond rules.filter 'popularity'}}active{{/ifCond}}"
+                       href="{{baseUrl}}/filter?filter=popularity">Popularity</a>
+                    <a class="{{#ifCond rules.filter 'newest'}}active{{/ifCond}}"
+                       href="{{baseUrl}}/filter?filter=newest">Newest</a>
+                    <a class="{{#ifCond rules.filter 'sales'}}active{{/ifCond}}"
+                       href="{{baseUrl}}/filter?filter=sales">Sales</a>
+                </div>
                 <div class="filter-category">
                     <span class="big-text active">Sort by</span>
                 </div>
                 <div class="filter-params">
-                    <a href="#">Default</a>
-                    <a class="active" href="#">Popularity</a>
-                    <a href="#">Newest</a>
-                    <a href="#">Price: low to hight</a>
-                    <a href="#">Price: hight to low</a>
+                    <a class="{{#ifCond rules.sortFilter 'low2high'}}active{{/ifCond}}"
+                       href="{{baseUrl}}/filter?sort=low2high">Price: low to hight</a>
+                    <a class="{{#ifCond rules.sortFilter 'high2low'}}active{{/ifCond}}"
+                       href="{{baseUrl}}/filter?sort=high2low">Price: hight to low</a>
+                </div>
+                <div class="filter-category">
+                    <span class="big-text active">Category</span>
+                </div>
+                <div class="filter-params">
+                    <select class="border" id="categorySelect" onchange="setFilter('{{baseUrl}}/filter?category=')">
+                        <option value="all">All</option>
+                        {{#each categories}}
+                            <option {{#ifCond this.alias ../category.alias}}selected{{/ifCond}} value="{{this.alias}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
                 </div>
                 <div class="filter-category">
                     <span class="big-text active">Price</span>
                 </div>
                 <div class="mt-3 filter-params">
-                    <a href="#">$0.00 - $50.00</a>
-                    <a class="active" href="#">$0.00 - $50.00</a>
-                    <a href="#">$0.00 - $50.00</a>
-                    <a href="#">$0.00 - $50.00</a>
-                    <a href="#">$350.00+</a>
+                    {{#if rules.price_to}}
+                        <a class="active"
+                           href="{{baseUrl}}/filter?price_from={{rules.price_from}}&price_to={{rules.price_to}}">
+                            ${{rules.price_from}}.00 - ${{rules.price_to}}.00
+                        </a>
+                       <div>
+                           ------------------
+                       </div>
+                    {{/if}}
+                    <a href="{{baseUrl}}/filter?price_from=0&price_to=1000">All prices</a>
+                    <a href="{{baseUrl}}/filter?price_from=0&price_to=50">$0.00 - $50.00</a>
+                    <a href="{{baseUrl}}/filter?price_from=50&price_to=100">$50.00 - $100.00</a>
+                    <a href="{{baseUrl}}/filter?price_from=100&price_to=200">$100.00 - $200.00</a>
+                    <a href="{{baseUrl}}/filter?price_from=200&price_to=350">$200.00 - $350.00</a>
+                    <a href="{{baseUrl}}/filter?price_from=350&price_to=1000">$350.00+</a>
                 </div>
-            </aside>
-            <aside class="d-block d-lg-none col-12 text-left mb-3">
-                <form action="" method="post" class="form-inline">
-                    <div class="form-group mr-3">
-                        <label for="sortby">
-                            <span class="active">Sort by &nbsp;</span>
-                        </label>
-                        <select id="sortby" class="form-control-sm">
-                            <option>
-                                Default
-                            </option>
-                            <option>
-                                Popularity
-                            </option>
-                            <option>
-                                Newest
-                            </option>
-                            <option>
-                                Price: low to hight
-                            </option>
-                            <option>
-                                Price: hight to low
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="price">
-                            <span class="active">Price &nbsp;</span>
-                        </label>
-                        <select id="price" class="form-control-sm">
-                            <option>
-                                $0.00 - $50.00
-                            </option>
-                            <option>
-                                $0.00 - $50.00
-                            </option>
-                            <option>
-                                $0.00 - $50.00
-                            </option>
-                            <option>
-                                $0.00 - $50.00
-                            </option>
-                            <option>
-                                $350.00+
-                            </option>
-                        </select>
-                    </div>
-                </form>
             </aside>
             <div class="col-lg-8 col-12">
                 <div class="mt-1 text-left">
-                    <span>We found <span class="f-semibold active">17</span> products available for you</span>
+                    <span>We found <span class="f-semibold active">{{count}}</span> products available for you</span>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-6 mb-5">
-                        <div class="image-bg square-bg"></div>
-                        <div class="text-center mt-2">
-                            <span class="f-medium active">Barton Sunglasses</span>
-                            <br>
-                            <span>194.00 USD</span>
+                    {{#each items}}
+                        <div class="col-12 col-md-6 mb-5">
+                            <a href="{{../baseUrl}}/{{this.category.alias}}/{{this.alias}}" class="d-block image-bg square-bg position-relative active" style="background-image: url('{{this.preview}}')">
+                                <div class="position-absolute add2cart text-center">
+                                    <div onclick="add2Cart('{{this.alias}}', '{{this.name}}', 1)" class="pointer btn bg-white p-3 rounded-0">
+                                                <span>ADD TO CART &nbsp; | &nbsp; <ion-icon class="align-top very-big-text heart"
+                                                                                            name="heart"></ion-icon></span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="{{../baseUrl}}/{{this.category.alias}}/{{this.alias}}" class="d-block text-center mt-2">
+                                <span class="f-medium active">{{this.name}}</span>
+                                <br>
+                                <span>{{this.price}}.00 USD</span>
+                            </a>
                         </div>
-                    </div>
-                    <div class="col-6 mb-5">
-                        <div class="image-bg square-bg"></div>
-                        <div class="text-center mt-2">
-                            <span class="f-medium active">Barton Sunglasses</span>
-                            <br>
-                            <span>194.00 USD</span>
-                        </div>
-                    </div>
-                    <div class="col-6 mb-5">
-                        <div class="image-bg square-bg"></div>
-                        <div class="text-center mt-2">
-                            <span class="f-medium active">Barton Sunglasses</span>
-                            <br>
-                            <span>194.00 USD</span>
-                        </div>
-                    </div>
-                    <div class="col-6 mb-5">
-                        <div class="image-bg square-bg"></div>
-                        <div class="text-center mt-2">
-                            <span class="f-medium active">Barton Sunglasses</span>
-                            <br>
-                            <span>194.00 USD</span>
-                        </div>
-                    </div>
-                    <div class="col-6 mb-5">
-                        <div class="image-bg square-bg position-relative">
-                            <div class="percent-sale position-absolute">
-                                -35%
-                            </div>
-                        </div>
-                        <div class="text-center mt-2">
-                            <span class="f-medium active">Barton Sunglasses</span>
-                            <br>
-                            <span>194.00 USD</span>
-                        </div>
-                    </div>
-                    <div class="col-6 mb-5">
-                        <div class="image-bg square-bg"></div>
-                        <div class="text-center mt-2">
-                            <span class="f-medium active">Barton Sunglasses</span>
-                            <br>
-                            <span>194.00 USD</span>
-                        </div>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
@@ -149,13 +102,26 @@
                 <nav aria-label="Page navigation example ">
                     <ul class="pagination justify-content-center active">
                         <li class="page-item mr-auto">
-                            <a class="page-link" href="#" tabindex="-1">< Previous</a>
+                            <a class="page-link" href="{{baseUrl}}/filter?skip={{rules.prewSkip}}" tabindex="-1">< Previous</a>
                         </li>
-                        <li class="page-item"><a class="page-link active-pagination" href="#"> 1 </a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link {{#ifCond curPage 1}}active-pagination{{/ifCond}}" href="{{baseUrl}}/filter?skip=0"> 1 </a></li>
+                        {{#if showLessFirst}}
+                            <li class="page-item px-2 py-1">
+                                <div class="align-bottom">...</div>
+                            </li>
+                        {{/if}}
+
+                        {{#each paginations}}
+                            <li class="page-item"><a class="page-link {{#ifCond ../curPage this.page}}active-pagination{{/ifCond}}" href="{{../baseUrl}}/filter?skip={{this.skip}}">{{this.page}}</a></li>
+                        {{/each}}
+                        {{#if showMoreLast}}
+                            <li class="page-item px-2 py-1">
+                                <div class="align-bottom">...</div>
+                            </li>
+                        {{/if}}
+                        <li class="page-item"><a class="page-link {{#ifCond curPage lastPagination.page}}active-pagination{{/ifCond}}" href="{{baseUrl}}/filter?skip={{lastPagination.skip}}">{{lastPagination.page}}</a></li>
                         <li class="page-item ml-auto">
-                            <a class="page-link" href="#">Next ></a>
+                            <a class="page-link" href="{{baseUrl}}/filter?skip={{rules.nextSkip}}">Next ></a>
                         </li>
                     </ul>
                 </nav>
@@ -163,120 +129,7 @@
             </div>
 
         </div>
-        <div class="row no-gutters mt-5">
-            <div class="col-md-6 col-lg-3 col-12 px-3 text-left mb-5">
-                <div class="active f-semibold ">
-                    <span>On Sale Products</span>
-                </div>
-                <hr>
-                <div class="row no-gutters">
-                    <div class="col-4">
-                        <div class="image-bg square-bg">
-
-                        </div>
-                    </div>
-                    <div class="col-8 pl-2">
-                        <div>
-                            <span class="active">Bog in Black Leather</span>
-                        </div>
-                        <div class="yellow big-text stars">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star-half"></ion-icon>
-                            <ion-icon name="star-outline"></ion-icon>
-                        </div>
-                        <div>
-                            <span>$349.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-12 px-3 text-left mb-5">
-                <div class="active f-semibold ">
-                    <span>On Sale Products</span>
-                </div>
-                <hr>
-                <div class="row no-gutters">
-                    <div class="col-4">
-                        <div class="image-bg square-bg">
-
-                        </div>
-                    </div>
-                    <div class="col-8 pl-2">
-                        <div>
-                            <span class="active">Bog in Black Leather</span>
-                        </div>
-                        <div class="yellow big-text stars">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star-half"></ion-icon>
-                            <ion-icon name="star-outline"></ion-icon>
-                        </div>
-                        <div>
-                            <span>$349.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-12 px-3 text-left mb-5">
-                <div class="active f-semibold ">
-                    <span>On Sale Products</span>
-                </div>
-                <hr>
-                <div class="row no-gutters">
-                    <div class="col-4">
-                        <div class="image-bg square-bg">
-
-                        </div>
-                    </div>
-                    <div class="col-8 pl-2">
-                        <div>
-                            <span class="active">Bog in Black Leather</span>
-                        </div>
-                        <div class="yellow big-text stars">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star-half"></ion-icon>
-                            <ion-icon name="star-outline"></ion-icon>
-                        </div>
-                        <div>
-                            <span>$349.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 col-12 px-3 text-left mb-5">
-                <div class="active f-semibold ">
-                    <span>On Sale Products</span>
-                </div>
-                <hr>
-                <div class="row no-gutters">
-                    <div class="col-4">
-                        <div class="image-bg square-bg">
-
-                        </div>
-                    </div>
-                    <div class="col-8 pl-2">
-                        <div>
-                            <span class="active">Bog in Black Leather</span>
-                        </div>
-                        <div class="yellow big-text stars">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star-half"></ion-icon>
-                            <ion-icon name="star-outline"></ion-icon>
-                        </div>
-                        <div>
-                            <span>$349.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{>help_goods}}
     </div>
     <div class="image-bg pt-5 pb-4 mt-3">
         <div class="container no-gutters mx-auto text-center">
@@ -294,7 +147,8 @@
                     <form action="" method="POST">
                         <div class="form-row">
                             <div class="form-group col-12 col-md-8">
-                                <input type="email" class="rounded-0 form-control" id="email" placeholder="Enter your email address">
+                                <input type="email" class="rounded-0 form-control" id="email"
+                                       placeholder="Enter your email address">
                             </div>
                             <div class="col-12 col-md-4">
                                 <button type="submit" class="rounded-0 btn bg-red text-white w-100">Subscribe</button>

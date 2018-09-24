@@ -1,0 +1,18 @@
+<div class="col-12 col-md-6 col-lg-3 px-2 mb-3">
+    <a href="/catalog/{{this.category.alias}}/{{this.alias}}" class="d-block image-bg square-bg position-relative" style="background-image: url('{{this.preview}}')">
+        <div class="hot position-absolute">
+            hot
+        </div>
+        <div class="position-absolute add2cart text-center">
+            <div onclick="add2Cart('{{this.alias}}', '{{this.name}}', 1)" class="pointer btn bg-white p-3 rounded-0">
+                                                <span>ADD TO CART &nbsp; | &nbsp; <ion-icon class="align-top very-big-text heart"
+                                                                                            name="heart"></ion-icon></span>
+            </div>
+        </div>
+    </a>
+    <a href="/catalog/{{this.category.alias}}/{{this.alias}}" class="d-block text-center">
+        <span class="big-text">{{this.name}}</span>
+        <br>
+        <span class="not-active">{{this.price}} USD</span>
+    </a>
+</div>

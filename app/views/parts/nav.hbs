@@ -1,5 +1,5 @@
-<nav class="container no-gutters px-3 navbar navbar-expand-md mx-auto f-medium">
-    <a class="navbar-brand logo" href="#">
+<nav class="container no-gutters px-3 navbar navbar-expand-md mx-auto f-medium change-bg">
+    <a class="navbar-brand logo" href="/">
         Flinto
     </a>
 
@@ -7,10 +7,10 @@
         <a href="javascript:void(0)" data-toggle="modal" data-target="#searchModal">
             <ion-icon class="icon px-2" name="search"></ion-icon>
         </a>
-        <a href="javascript:void(0)" class="d-inline-block px-2 text-center position-relative mr-2">
+        <a href="/cart" class="d-inline-block px-2 text-center position-relative mr-2">
             <ion-icon class="icon" name="cart"></ion-icon>
             <div class="cart-count position-absolute rounded-circle text-center align-top">
-                <div class="cart-count-text">2</div>
+                <div class="cart-count-text"><span id="cartSize"></span></div>
             </div>
         </a>
         <button class="d-md-none icon-btn px-2" type="button" data-toggle="collapse" data-target="#nav"
@@ -21,12 +21,12 @@
 
     <div class="order-2 order-md-1 collapse navbar-collapse" id="nav">
         <div class="navbar-nav d-flex justify-content-between mx-auto not-active">
-            <a class="nav-item nav-link active" href="#">Collections</a>
-            <a class="nav-item nav-link" href="#">Sales</a>
-            <a class="nav-item nav-link" href="#">Trends</a>
-            <a class="nav-item nav-link" href="#">Terms</a>
-            <a class="nav-item nav-link" href="#">Policy</a>
-            <a class="nav-item nav-link" href="#">Refunds</a>
+            <a class="nav-item nav-link active" href="/catalog">Collections</a>
+            <a class="nav-item nav-link" href="/catalog?filter=sales">Sales</a>
+            <a class="nav-item nav-link" href="/catalog?filter=popularity">Trends</a>
+            <a class="nav-item nav-link" href="/qa/terms">Terms</a>
+            <a class="nav-item nav-link" href="/qa/policy">Policy</a>
+            <a class="nav-item nav-link" href="/qa/refund">Refunds</a>
         </div>
     </div>
 </nav>
