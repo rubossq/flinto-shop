@@ -94,7 +94,7 @@
                                     <div class="images-block py-2 px-2 bg-light border rounded">
                                         {{#each item.images}}
                                             <div class="image-item image-bg position-relative" style="background-image:url('{{this}}')">
-                                                <div onclick="removeImage(this, '{{../item.alias}}', '{{this}}')" class="remove-image pointer position-absolute">
+                                                <div onclick="removeImage(this, '{{../item._id}}', '{{this}}')" class="remove-image pointer position-absolute">
                                                     <ion-icon class="align-middle very-big-text text-danger" name="close-circle-outline"></ion-icon>
                                                 </div>
                                             </div>
@@ -144,7 +144,7 @@
 
 <div class="d-none">
     <div class="templateImageBlock image-item image-bg position-relative" style="background-image:url('%src%')">
-        <div onclick="removeImage(this, '{{item.alias}}', '%src%', 'tmp')" class="remove-image pointer position-absolute">
+        <div onclick="removeImage(this, '{{item._id}}', '%src%', 'tmp')" class="remove-image pointer position-absolute">
             <ion-icon class="align-middle very-big-text text-danger" name="close-circle-outline"></ion-icon>
         </div>
     </div>

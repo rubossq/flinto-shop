@@ -18,7 +18,7 @@ let fs = require('fs');
 let path = require('path');
 
 router.get('/', function (req, res, next) {
-    Item.find({}).sort({_id: -1}).exec(function (err, items) {
+    Item.find({}).sort({_id: -1}).populate('category').exec(function (err, items) {
         if (err) {
             return next(err);
         } else {
@@ -129,17 +129,23 @@ router.get('/:category', function (req, res, next) {
         if (err) {
             return next(err);
         } else {
-            Item.find({category: category._id}).exec(function (err, items) {
+            Item.find({category: category._id}).populate('category').exec(function (err, items) {
                 if (err) {
                     return next(err);
                 } else {
-                    res.render('admin_pages/items', {
-                        layout: 'layouts/admin_layout',
-                        title: 'Items from ' + category.name,
-                        expandItems: true,
-                        afterBody: '<script src="js/admin_panel.js"></script>',
-                        items: items,
-                        baseUrl: req.baseUrl
+                    Item.loadImages(items, function(err, items){
+                        if (err) {
+                            return next(err);
+                        } else {
+                            res.render('admin_pages/items', {
+                                layout: 'layouts/admin_layout',
+                                title: 'Items from ' + category.name,
+                                expandItems: true,
+                                afterBody: '<script src="js/admin_panel.js"></script>',
+                                items: items,
+                                baseUrl: req.baseUrl
+                            });
+                        }
                     });
                 }
             });
@@ -147,16 +153,18 @@ router.get('/:category', function (req, res, next) {
     });
 });
 
-router.post('/:alias/images/remove', function (req, res, next) {
+router.post('/:id/images/remove', function (req, res, next) {
 
 
-    let src = path.join(req.params.alias, req.body.name);
+    let src = path.join(req.params.id, req.body.name);
 
     if(req.body.folder && req.body.folder === 'tmp'){
-        src = path.join(Constant.UPLOADS_DIR, src);
+        src = path.join(Constant.UPLOADS_DIR, req.session.item_temp_id, req.body.name);
     }else{
         src = path.join(Constant.ITEMS_ASSETS_DIR, src);
     }
+
+    console.log(src);
 
     rimraf(src, function (err) {
         if (err) {
@@ -206,7 +214,7 @@ router.post('/edit/:item_id?', validate(validation), function (req, res, next) {
 
 function mvAndRedirect(req, res, next, item){
     let src = path.join(Constant.UPLOADS_DIR, req.session.item_temp_id);
-    let dest = path.join(Constant.ITEMS_ASSETS_DIR, item.alias);
+    let dest = path.join(Constant.ITEMS_ASSETS_DIR, item._id + '');
     if (fs.existsSync(src)) {
         fsExtra.copy(src, dest, {overwrite: false}, err => {
             if (err) {
@@ -228,13 +236,13 @@ function mvAndRedirect(req, res, next, item){
 
 }
 
-router.get('/remove/:alias', function (req, res, next) {
+router.get('/remove/:id', function (req, res, next) {
 
-    Item.deleteOne({alias: req.params.alias}, function (err) {
+    Item.deleteOne({_id: req.params.id}, function (err) {
         if (err) {
             return next(err);
         } else {
-            let src = path.join(Constant.ITEMS_ASSETS_DIR, req.params.alias);
+            let src = path.join(Constant.ITEMS_ASSETS_DIR, req.params.id);
             rimraf(src, function (err) {
                 if (err) {
                     return next(err);

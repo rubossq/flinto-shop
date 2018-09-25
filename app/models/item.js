@@ -25,7 +25,7 @@ let ItemSchema = new Schema({
 });
 
 ItemSchema.methods.loadImages = function (cb) {
-    let way = path.join(Constant.ITEMS_ASSETS_DIR, this.alias);
+    let way = path.join(Constant.ITEMS_ASSETS_DIR, this._id + '');
     if (fs.existsSync(way)) {
         fs.readdir(way, (err, files) => {
             if (err) {

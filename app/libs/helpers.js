@@ -83,9 +83,9 @@ module.exports.extractRules = function(query, defaults, cb) {
     let sortRule = {};
 
     if (sort) {
-        sortRule = {price: -1};
+        sortRule = {price: 1};
         if (sort === 'high2low') {
-            sortRule = {price: 1};
+            sortRule = {price: -1};
         }
     }
 

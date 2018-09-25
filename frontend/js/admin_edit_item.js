@@ -19,10 +19,10 @@ function readUrl(input) {
 
 }
 
-function removeImage(el, alias, src, folder){
+function removeImage(el, id, src, folder){
 
     $.ajax({
-        url: baseUrl+"/"+alias+"/images/remove",
+        url: baseUrl+"/"+id+"/images/remove",
         type: 'POST',
         dataType: "json",
         data: JSON.stringify({name: src.split('/').pop(), folder: folder}),

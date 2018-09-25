@@ -5,6 +5,7 @@
     "MONGO_URL": "mongodb://localhost:27017/",
     "SESSIONS_DB": "playdb",
     "MAIN_DB": "flintoshop",
+    "TEST_DB": "flintotest",
     "MONGO_SECRET": "secret"
   },
   "production":{
@@ -13,6 +14,7 @@
     "MONGO_URL": "mongodb://localhost:27017/",
     "SESSIONS_DB": "playdb",
     "MAIN_DB": "flintoshop",
+    "TEST_DB": "flintotest",
     "MONGO_SECRET": "secret"
   }
 }

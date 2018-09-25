@@ -31,7 +31,7 @@ router.get('/:item', function (req, res, next) {
                                     } else {
                                         Item.findRandom({category: category._id}, {}, {limit: 4, populate: 'category'}, function (err, relatedItems) {
                                             if(err){
-                                                cb(err);
+                                                helpers.notFound404(next);
                                             }else {
                                                 Item.loadImages(relatedItems, function (err) {
                                                     if (err) {
@@ -46,7 +46,8 @@ router.get('/:item', function (req, res, next) {
                                                             salesItems: salesItems,
                                                             bestItems: bestItems,
                                                             randomItems: randomItems,
-                                                            relatedItems: relatedItems
+                                                            relatedItems: relatedItems,
+                                                            afterBody: '<script src="js/details.js"></script>'
                                                         });
                                                     }
                                                 });

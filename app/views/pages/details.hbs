@@ -13,7 +13,8 @@
                     <div class="row no-gutters">
                         {{#each item.images}}
                             <div class="col-3 col-md-12  mb-2 pr-md-0 pr-1">
-                                <div class="image-bg square-bg" style="background-image: url('{{this}}')">
+                                <div onclick="setImage(this)"
+                                     class="{{#ifCond this ../item.preview}}border border-primary{{/ifCond}} pointer image-bg square-bg item-images" style="background-image: url('{{this}}')">
 
                                 </div>
                             </div>
@@ -46,7 +47,7 @@
                 </div>
                 <div class="order-1 order-md-2 col-12 col-md-6">
                     <div class="pl-md-2 pr-md-5">
-                        <div class="images-bg w-100 square-bg position-relative mb-2" style="background-image: url('{{item.preview}}')">
+                        <div class="images-bg w-100 square-bg position-relative mb-2" id="previewBlock" style="background-image: url('{{item.preview}}')">
                             <div class="new position-absolute">
                                 NEW
                             </div>

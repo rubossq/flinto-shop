@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./app.js",
+    "test": "./node_modules/mocha/bin/mocha",
     "startDev": "nodemon ./app.js",
-    "gulp": "./node_modules/.bin/gulp"
+    "gulp": "npm link gulp && gulp",
+    "eslint": "./node_modules/.bin/eslint app/**/*.js app.js && echo 'Successfully linted!'"
   },
   "author": "",
   "license": "ISC",
@@ -39,6 +41,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.24.7",
+    "chai": "^4.1.2",
     "del": "^3.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-cached": "^1.1.1",
@@ -57,8 +60,10 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylus": "^2.7.0",
     "gulp-uglify": "^3.0.1",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
     "semver": "^5.5.1",
+    "sinon": "^6.3.4",
     "stream-combiner2": "^1.1.1",
     "stylus": "^0.54.5"
   }
