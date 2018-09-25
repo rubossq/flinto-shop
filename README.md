@@ -9,7 +9,6 @@ Used technologies:
 - Bootstrap
 - JQuery
 - AJAX
-- Animate css
 
 ## Backend
 - Nodejs ( Express js )
@@ -17,6 +16,7 @@ Used technologies:
 - Handlebars
 - Lodash
 - Stylus
+- NPM modules (passportJS, multer, async)
 
 ## Additional
 - Gulp + plugins
